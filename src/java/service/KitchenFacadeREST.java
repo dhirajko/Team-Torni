@@ -25,7 +25,7 @@ import model.Kitchen;
  * @author Omistaja
  */
 @Stateless
-@Path("model.kitchen")
+@Path("kitchen")
 public class KitchenFacadeREST extends AbstractFacade<Kitchen> {
 
     @PersistenceContext(unitName = "TorniPU")

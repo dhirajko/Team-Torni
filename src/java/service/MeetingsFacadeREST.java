@@ -25,7 +25,7 @@ import model.Meetings;
  * @author Omistaja
  */
 @Stateless
-@Path("model.meetings")
+@Path("meetings")
 public class MeetingsFacadeREST extends AbstractFacade<Meetings> {
 
     @PersistenceContext(unitName = "TorniPU")

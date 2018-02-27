@@ -25,7 +25,7 @@ import model.Floorcare;
  * @author Omistaja
  */
 @Stateless
-@Path("model.floorcare")
+@Path("floorcare")
 public class FloorcareFacadeREST extends AbstractFacade<Floorcare> {
 
     @PersistenceContext(unitName = "TorniPU")

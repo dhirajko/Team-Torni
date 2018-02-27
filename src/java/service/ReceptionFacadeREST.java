@@ -25,7 +25,7 @@ import model.Reception;
  * @author Omistaja
  */
 @Stateless
-@Path("model.reception")
+@Path("reception")
 public class ReceptionFacadeREST extends AbstractFacade<Reception> {
 
     @PersistenceContext(unitName = "TorniPU")

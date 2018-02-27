@@ -25,7 +25,7 @@ import model.Pictures;
  * @author Omistaja
  */
 @Stateless
-@Path("model.pictures")
+@Path("pictures")
 public class PicturesFacadeREST extends AbstractFacade<Pictures> {
 
     @PersistenceContext(unitName = "TorniPU")

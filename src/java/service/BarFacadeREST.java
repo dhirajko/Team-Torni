@@ -25,7 +25,7 @@ import model.Bar;
  * @author Omistaja
  */
 @Stateless
-@Path("model.bar")
+@Path("bar")
 public class BarFacadeREST extends AbstractFacade<Bar> {
 
     @PersistenceContext(unitName = "TorniPU")

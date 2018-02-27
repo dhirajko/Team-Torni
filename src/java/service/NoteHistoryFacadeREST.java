@@ -25,7 +25,7 @@ import model.NoteHistory;
  * @author Omistaja
  */
 @Stateless
-@Path("model.notehistory")
+@Path("notehistory")
 public class NoteHistoryFacadeREST extends AbstractFacade<NoteHistory> {
 
     @PersistenceContext(unitName = "TorniPU")

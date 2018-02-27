@@ -25,7 +25,7 @@ import model.Breakfast;
  * @author Omistaja
  */
 @Stateless
-@Path("model.breakfast")
+@Path("breakfast")
 public class BreakfastFacadeREST extends AbstractFacade<Breakfast> {
 
     @PersistenceContext(unitName = "TorniPU")
