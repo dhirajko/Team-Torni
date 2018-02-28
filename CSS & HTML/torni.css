@@ -12,6 +12,12 @@ body {
 	font-family: 'Titillium Web', sans-serif;
 
 }
+.loginpage {
+			width: 400px;
+			padding: 10% 0 0;
+			margin: auto;
+
+		}
 
 h2 {
 	color: azure;
@@ -27,8 +33,8 @@ h2 {
 	grid-template-rows: 1fr 4fr 1fr;
 	grid-template-areas: 
 		"head head head" 
-		"menu notes notes" 
-		"foot foot foot";
+		"menu notes notes" ;
+		//"foot foot foot";
 }
 
 .head {
@@ -51,7 +57,7 @@ h2 {
 	border: 1px solid white;
 }
 
-.header h1 {
+h1 {
 	font-family: 'Merriweather', serif;
 	text-align: center;
 	color: azure;
@@ -88,7 +94,7 @@ h2 {
 	text-align: center;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-areas: "mynotes info" "all all";
+	grid-template-areas: "mynotes info";
 }
 
 .mynotes {
@@ -134,8 +140,8 @@ footer {
 			"head head"
 			"menu menu"
 			"notes notes"
-			"notes notes"
-			"foot foot";
+			"notes notes";
+			//"foot foot";
 	}
 	.container .head img {
 	}
@@ -149,12 +155,12 @@ footer {
 		grid-template-areas: 
 			"head" 
 			"menu" 
-			"notes" 
-			"foot";
+			"notes" ;
+			//"foot";
 	}
 	.notes{
 		grid-template-columns: 1fr;
-		grid-template-areas: "mynotes" "info" "all";
+		grid-template-areas: "mynotes" "info";
 	}
 	
 }
@@ -179,6 +185,6 @@ footer {
 	}
 	.notes{
 		grid-template-columns: 1fr;
-		grid-template-areas: "mynotes" "info" "all";
+		grid-template-areas: "mynotes" "info";
 	}
 }
