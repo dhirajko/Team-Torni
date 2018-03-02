@@ -12,14 +12,11 @@ body {
 	font-family: 'Titillium Web', sans-serif;
 
 }
-.loginpage {
-			width: 400px;
-			padding: 10% 0 0;
-			margin: auto;
 
-		}
-
-h2 {
+.login{
+	display: none;
+}
+h2,.userbutton{
 	color: azure;
 	margin: 0;
 }
@@ -30,11 +27,8 @@ h2 {
 	display: grid;
 	grid-gap: 0;
 	grid-template-columns: 175px 1fr 1fr;
-	grid-template-rows: 1fr 4fr 1fr;
-	grid-template-areas: 
-		"head head head" 
-		"menu notes notes" ;
-		//"foot foot foot";
+	grid-template-rows: 1fr 4fr;
+	grid-template-areas: "head head head" "menu notes notes";
 }
 
 .head {
@@ -42,8 +36,7 @@ h2 {
 	font-size: 150%;
 	display: grid;
 	grid-template-columns: 1fr 3fr 3fr;
-	grid-template-areas: 
-		"img header header";
+	grid-template-areas: "img header header";
 }
 
 .container .head img {
@@ -76,6 +69,8 @@ h1 {
 .menu {
 	grid-area: menu;
 	border: 1px solid white;
+	align-content: center;
+	text-align: center;
 }
 
 .menu h2 {
@@ -83,11 +78,23 @@ h1 {
 }
 
 .menu ul {
+	padding-left: 0px;
 	list-style-type: none;
+	width: 175px;
+	text-align: center;
 }
-
-.menu ul li {}
-
+.menu ul li a{
+	text-transform: uppercase;
+	padding: 5px;
+	display: block;
+	text-decoration: none;
+	font-size: 115%;
+	color: aliceblue;
+}
+.menu ul li a:hover{
+	background-color: lightblue;
+	color: black;
+}
 .notes {
 	grid-area: notes;
 	border: 1px solid white;
@@ -101,7 +108,58 @@ h1 {
 	border: 1px solid white;
 	grid-area: mynotes;
 }
+.hm{
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 120%;
+	color: black;
+	background-color:aliceblue;
+	width: 250px;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 2px;
+	padding: 0;
+}
+.drop{
+	position: relative;
+	display: inline-block;
+}
+.dropdown{
+	display: none;
+	width: 250px;
+	position: absolute;
+	z-index: 1;
+	text-align: left;
+}
+.dropdown a{
+	color:azure;
+	text-decoration: none;
+	display: block;
+}
+.dropdown a:hover{
+	background-color: lightblue;
+	color: black;
+}
+.drop:hover .dropdown{
+	display: block;
+}
 
+.drop .hm:hover{
+	background-color: palevioletred;	
+}
+.notelist{
+	background-color: snow;
+	display: flex;
+	justify-content: space-between;
+}
+.id{
+	flex-grow: 1;
+}
+.title{
+	flex-grow: 3;
+}
+.time{
+	flex-grow: 1;
+}
 .info {
 	border: 1px solid white;
 	grid-area: info;
@@ -120,30 +178,27 @@ footer {
 #refresh,
 #forward,
 #backward,
-#home{
+#home {
 	width: 35px;
 	border: none;
 }
+
 #refresh:hover,
 #forward:hover,
 #backward:hover,
-#home:hover{
+#home:hover {
 	background-color: deepskyblue;
 }
 
-@media(min-width:600px) and (max-width: 700px){
-	.container{
+@media(min-width:600px) and (max-width: 700px) {
+	.container {
 		height: 1000px;
 		grid-template-columns: 150px 1fr;
-		grid-template-rows: 0.5fr 0.5fr 2fr 1fr 0.5fr;
-		grid-template-areas: 
-			"head head"
-			"menu menu"
-			"notes notes"
-			"notes notes";
-			//"foot foot";
+		grid-template-rows: 0.5fr 0.5fr 2fr;
+		grid-template-areas: "head head" "menu menu" "notes notes";
 	}
-	.container .head img {
+	.menu ul{
+		width: auto;
 	}
 }
 
@@ -151,40 +206,41 @@ footer {
 	.container {
 		height: 1250px;
 		grid-template-columns: 1fr;
-		grid-template-rows: 1fr 1fr 5fr 1fr;
-		grid-template-areas: 
-			"head" 
-			"menu" 
-			"notes" ;
-			//"foot";
+		grid-template-rows: 1fr 1fr 5fr;
+		grid-template-areas: "head" "menu" "notes";
 	}
-	.notes{
+	.menu ul{
+		width: auto;
+	}
+	.notes {
 		grid-template-columns: 1fr;
 		grid-template-areas: "mynotes" "info";
 	}
-	
+
 }
 
 @media (max-width:474px) {
-	.container {		
+	.container {
 		height: 1500px;
-		grid-template-rows: 1fr 1fr 5fr 1fr;
+		grid-template-rows: 1fr 1fr 5fr;
 		grid-template-columns: 1fr;
-		grid-template-areas: 
-			"head" 
-			"menu" 
-			"notes"  
-			"foot";
+		grid-template-areas: "head" "menu" "notes";
 	}
-	.head{
+	.head {
 		grid-template-columns: 1fr;
 		grid-template-areas: "img" "header";
 	}
 	.container .head img {
 		margin: auto;
 	}
-	.notes{
+	.menu ul{
+		width: auto;
+	}
+	.notes {
 		grid-template-columns: 1fr;
 		grid-template-areas: "mynotes" "info";
 	}
+}
+.hidden{
+	display: none;
 }
