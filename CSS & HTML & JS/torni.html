@@ -4,23 +4,22 @@
 <head>
 	<meta charset="utf-8">
 	<title>Torni</title>
-	<link href="torni.css" type="text/css" rel="stylesheet">
+	<link href="torni.css" style="text/css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web" rel="stylesheet">
 	<script type="text/javascript" src="torni.js"></script>
-	<script type="text/javascript" src="notes.js"></script>
 </head>
 
 <body>
 	<div class="login" class="hidden">
 		<h1>Welcome</h1>
-		
+
 		<div class="logininfo">
-			<input type="text" name="user" placeholder="username"/>
-			<input type="text" name="psw" placeholder="password"/>
+			<input type="text" name="user" placeholder="username" />
+			<input type="text" name="psw" placeholder="password" />
 			<button id="loginbutton">login</button>
 		</div>
 	</div>
-	
+
 	<div class="container">
 		<section class="head">
 			<img src="tornivalk.png" alt="logo">
@@ -30,7 +29,7 @@
 				<nav class="navigation">
 					<ul>
 						<li>
-							<input type="text" id="search" name = "search" placeholder=u>		
+							<input type="text" id="search" name="search" placeholder="Search">
 							<input type="image" src="refresh.png" alt="Submit" id="refresh">
 							<input type="image" src="forward.png" alt="Submit" id="forward">
 							<input type="image" src="backward.png" alt="Submit" id="backward">
@@ -43,7 +42,7 @@
 			</header>
 		</section>
 
-		<nav class="menu">			
+		<nav class="menu">
 			<ul>
 				<li data-target-section=".notes"><a href="">Home</a></li>
 				<li data-target-section=".add"><a href="">Add note</a></li>
@@ -59,9 +58,10 @@
 				<div class="drop">
 					<button class="hm">Hotel Manager</button>
 					<div class="dropdown">
-						<a href="#">Hotel Manager</a>
-						<a href="#">Bar</a>
-						<a href="#">Breakfast</a>
+						<a id ="hotelmanager" href="#" >Hotel Manager</a>
+						<a id="allnotes" href="#" onclick="showNotes(allnotes)">All notes</a>
+						<a href="#" id="bar">Bar</a>
+						<a href="#" id="breakfast">Breakfast</a>
 						<a href="#">Floor care</a>
 						<a href="#">Kitchen</a>
 						<a href="#">Meetings</a>
@@ -70,54 +70,46 @@
 					</div>
 				</div>
 				<div class="notelist">
-					<div class="id">ID</div>
+					<div class="noteid">ID</div>
+					<p></p>
 					<div class="title">Title</div>
+					<p></p>
 					<div class="time">Time</div>
+					<p></p>
 				</div>
 			</div>
 
 			<div class="info">
-				<h2>Note's info</h2>
-				<p>Title</p>
-				<p>Informant</p>
-				<p>Timestamp</p>
-				<p>Description</p>
-				<p>Button to close the note and to move it to history</p>
-			</div>
+				<h2 id="infotitle">Title</h2>
+				<p id ="informant">Informant</p>
+				<p id="timestamp">Timestamp</p>
+				<p id=descripton>Description</p>
+				<button onclick="noteFinished()">Done</button>
+				<p id="closing"></p>
+			</div> 
 
 		</section>
-		
+
 		<section class="add" class="hidden">
 			<h2>Add Note</h2>
 			<form>
-			<p>Title</p><input type="text" id="title">
-            <p>Description</p><input type="textarea" id="content">
-			<p>Department</p>
-			<select id="department">
-                <option value="Bar">Bar</option>
-                <option value="Restaurant">Restaurant</option>
-                <option value="Kitchen">Kitchen</option>
-                <option value="Floorcare">Floorcare</option>
-                <option value="Meetings">Meetings</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Reception">Reception</option>
-			</select>
-			<br>
-			<br>
-            <button id="addbtn">Add note</button>
-				</form>
+				<p>Title</p><input type="text" id="title">
+				<p>Description</p><input type="textbox" id="content">
+				<p>Department</p><input type="text" id="department">
+				<button id="add-note-btn">Add note</button>
+			</form>
 		</section>
-		
-		<section class="management" class="hidden">	
+
+		<section class="management" class="hidden">
 			<h2>User Management</h2>
 			<p>Something</p>
 		</section>
-		
+
 		<section class="settings" class="hidden">
 			<h2>Settings</h2>
 			<p>Something</p>
 		</section>
-		
+
 		<section class="history" class="hidden">
 			<h2>Note History</h2>
 			<p>Something</p>

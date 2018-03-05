@@ -161,7 +161,7 @@ h1 {
 	display: flex;
 	justify-content: space-between;
 }
-.id{
+.noteid{
 	flex-grow: 1;
 }
 .title{
@@ -173,6 +173,14 @@ h1 {
 .info {
 	border: 1px solid white;
 	grid-area: info;
+}
+.info button{
+	float: right;
+	width:100px;
+	height: 30px;
+	color:midnightblue;
+	border-radius: 4px;
+	font-family: 'Titillium Web', sans-serif;
 }
 
 .all {
@@ -254,7 +262,6 @@ footer {
 .hidden{
 	display: none;
 }
-
-.management, .add, .settings, .history {
-	text-align: center;
+p{
+	color: azure;
 }
