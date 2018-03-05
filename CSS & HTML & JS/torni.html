@@ -45,7 +45,7 @@
 		<nav class="menu">
 			<ul>
 				<li data-target-section=".notes"><a href="">Home</a></li>
-				<li data-target-section=".add"><a href="">Add note</a></li>
+				<li data-target-section=".add"><a onclick="addNote()" href="">Add note</a></li>
 				<li data-target-section=".management"><a href="">User Management</a></li>
 				<li data-target-section=".settings"><a href="">Settings</a></li>
 				<li data-target-section=".history"><a href="">Note History</a></li>
@@ -56,17 +56,17 @@
 		<section class="notes">
 			<div class="mynotes">
 				<div class="drop">
-					<button class="hm">Hotel Manager</button>
+					<button class="hm" id="notesGroup">Hotel Manager</button>
 					<div class="dropdown">
-						<a id ="hotelmanager" href="#" >Hotel Manager</a>
-						<a id="allnotes" href="#" onclick="showNotes(allnotes)">All notes</a>
-						<a href="#" id="bar">Bar</a>
-						<a href="#" id="breakfast">Breakfast</a>
-						<a href="#">Floor care</a>
-						<a href="#">Kitchen</a>
-						<a href="#">Meetings</a>
-						<a href="#">Reception</a>
-						<a href="#">Restaurant</a>
+						<a id="hotelmanager" href="#" onclick = "showNotes('hotelmanager')">Hotel Manager</a>
+						<a id="allnotes" href="#" onclick="showNotes('allnotes')">All notes</a>
+						<a id="bar" href="#" onclick = "showNotes('bar')">Bar</a>
+						<a id="breakfast" href="#" onclick = "showNotes('breakfast')">Breakfast</a>
+						<a id="floorcare" href="#" onclick = "showNotes('floorcare')">Floor care</a>
+						<a id="kitchen" href="#" onclick = "showNotes('kitchen')">Kitchen</a>
+						<a id="meetings"href="#" onclick = "showNotes('meetings')">Meetings</a>
+						<a id="reception" href="#" onclick = "showNotes('reception')">Reception</a>
+						<a id="restaurant" href="#" onclick = "showNotes('restaurant')">Restaurant</a>
 					</div>
 				</div>
 				<div class="notelist">
@@ -83,7 +83,7 @@
 				<h2 id="infotitle">Title</h2>
 				<p id ="informant">Informant</p>
 				<p id="timestamp">Timestamp</p>
-				<p id=descripton>Description</p>
+				<p id="descripton">Description</p>
 				<button onclick="noteFinished()">Done</button>
 				<p id="closing"></p>
 			</div> 
@@ -98,12 +98,13 @@
 				<p>Department</p>
 				<select id="department">
                 	<option value="Bar">Bar</option>
-                	<option value="Restaurant">Restaurant</option>
-                	<option value="Kitchen">Kitchen</option>
-                	<option value="Floorcare">Floorcare</option>
+					<option value="Breakfast">Breakfast</option>
+					<option value="Floorcare">Floorcare</option>
+					<option value="Hotel Manager">Hotel Manager</option>
+					<option value="Kitchen">Kitchen</option>
                 	<option value="Meetings">Meetings</option>
-                	<option value="Breakfast">Breakfast</option>
                 	<option value="Reception">Reception</option>
+					<option value="Restaurant">Restaurant</option>
 				</select>
 				<br>
 				<br>
