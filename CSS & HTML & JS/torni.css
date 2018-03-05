@@ -254,3 +254,7 @@ footer {
 .hidden{
 	display: none;
 }
+
+.management, .add, .settings, .history {
+	text-align: center;
+}

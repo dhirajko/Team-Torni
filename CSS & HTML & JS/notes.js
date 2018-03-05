@@ -1,5 +1,6 @@
 /* global document, XMLHttpRequest, window */
 
+document.addEventListener("DOMContentLoaded", function () {
 function addNote() {
     function _getPostData() {
         // TODO these (title, content, department) are the ids for form elements Kaisa creates.
@@ -21,7 +22,7 @@ function addNote() {
         var xhr = new XMLHttpRequest();
         
         // TODO /add-note is the post destination url(java side) 
-        xhr.open("POST", '/add-note', true);
+        xhr.open("POST", 'http://10.114.32.42:8080/TorniNew/tower/note', true);
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.send(JSON.stringify(postData)); 
         
@@ -41,7 +42,7 @@ function addNote() {
     }
     
     // TODO add-note-btn is the id for send button Kaisa creates.
-    var addNoteBtn = document.getElementById("add-note-btn");
+    var addNoteBtn = document.getElementById("addbtn");
     addNoteBtn.addEventListener("click", function (event) {
         // prevent the button from refreshing the page
         event.preventDefault();
@@ -59,3 +60,4 @@ function addNote() {
 }
 
 addNote();
+});
