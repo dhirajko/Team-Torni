@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //document.addEventListener("DOMContenLoaded")
 
-const url = 'https://jsonplaceholder.typicode.com/todos';
+/*const url = 'https://jsonplaceholder.typicode.com/todos';
 fetch(url)
 	.then(function (response) {
 	jsObj = JSON.parse(url);
 	
 		return jsObj;
 	});
-
+*/
 function noteFinished() {
 	let txt;
 	let r = confirm("Are you sure the task is finished?");

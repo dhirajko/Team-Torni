@@ -265,3 +265,7 @@ footer {
 p{
 	color: azure;
 }
+
+.management, .add, .settings, .history {
+	text-align: center;
+}
