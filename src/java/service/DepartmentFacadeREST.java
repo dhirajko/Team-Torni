@@ -37,14 +37,14 @@ public class DepartmentFacadeREST extends AbstractFacade<Department> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
     public void create(Department entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Department entity) {
         super.edit(entity);
     }
@@ -57,14 +57,14 @@ public class DepartmentFacadeREST extends AbstractFacade<Department> {
 
     @GET
     @Path("{id}")
-    @Produces({ MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public Department find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({ MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Department> findAll() {
         return super.findAll();
     }

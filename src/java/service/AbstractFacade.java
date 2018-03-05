@@ -54,7 +54,7 @@ public abstract class AbstractFacade<T> {
     public List<T> findByText(String text) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         //cq.select(cq.from(entityClass));
-        cq.where(getEntityManager().getCriteriaBuilder().like(cq.from(entityClass).get("name"), "%" + text + "%"));
+        cq.where(getEntityManager().getCriteriaBuilder().like(cq.from(entityClass).get("title"), "%" + text + "%"));
         return getEntityManager().createQuery(cq).getResultList();
     }
 

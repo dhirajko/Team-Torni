@@ -37,14 +37,14 @@ public class NoteFacadeREST extends AbstractFacade<Note> {
 
     @POST
     @Override
-    @Consumes({ MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
     public void create(Note entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({ MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Note entity) {
         super.edit(entity);
     }
@@ -57,17 +57,26 @@ public class NoteFacadeREST extends AbstractFacade<Note> {
 
     @GET
     @Path("{id}")
-    @Produces({ MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public Note find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({ MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Note> findAll() {
         return super.findAll();
     }
+    
+    @GET
+    @Path("/title/{text}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Note> findByTitle(@PathParam("text") String text) {
+        return super.findByText(text);
+    }
+    
+    
 
     /*@GET
     @Path("{from}/{to}")
