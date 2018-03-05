@@ -28,7 +28,9 @@
 				<h1>NOTES</h1>
 				<nav class="navigation">
 					<ul>
-						<li><input type="image" src="refresh.png" alt="Submit" id="refresh">
+						<li>
+							<input type="text" id="search" name = "search" placeholder=u>		
+							<input type="image" src="refresh.png" alt="Submit" id="refresh">
 							<input type="image" src="forward.png" alt="Submit" id="forward">
 							<input type="image" src="backward.png" alt="Submit" id="backward">
 							<input type="image" src="home.png" alt="Submit" id="home">
@@ -75,13 +77,23 @@
 
 			<div class="info">
 				<h2>Note's info</h2>
+				<p>Title</p>
+				<p>Informant</p>
+				<p>Timestamp</p>
+				<p>Description</p>
+				<p>Button to close the note and to move it to history</p>
 			</div>
 
 		</section>
 		
 		<section class="add" class="hidden">
 			<h2>Add Note</h2>
-			<p>Something</p>
+			<form>
+			<p>Title</p><input type="text" id="title">
+            <p>Description</p><input type="textbox" id="content">
+			<p>Department</p><input type="text" id="department">
+            <button id="add-note-btn">Add note</button>
+				</form>
 		</section>
 		
 		<section class="management" class="hidden">	
