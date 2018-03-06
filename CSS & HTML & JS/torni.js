@@ -18,22 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		})
 	}
 
-	//const allnotes = document.getElementById("allnotes");
-	//	allnotes.addEventListener("click", function(){
-	//	})
 
 });
-
-//document.addEventListener("DOMContenLoaded")
-
-/*const url = 'https://jsonplaceholder.typicode.com/todos';
-fetch(url)
-	.then(function (response) {
-	jsObj = JSON.parse(url);
-	
-		return jsObj;
-	});
-*/
 
 //Checks if user wants to close the note
 function noteFinished() {
@@ -55,7 +41,14 @@ function showNotes(group) {
 		
 	document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
 	
-	//let parent = document.getElementById('allnotes').parentElement.parentElement;
-	//document.getElementsByClassName('hm').innerHTML.value = "All notes";
-	//console.log(parent);
+	
+	function fetchNotes(change){
+		fetch("https://jsonplaceholder.typicode.com/todos")
+		.then(response => response.blob())
+		.then(function(myBlob){
+			change.href = "bdfbsd";
+			console.log(change.href);
+		});
+	}
 }
+
