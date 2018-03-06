@@ -59,7 +59,7 @@ public class NoteFacadeREST extends AbstractFacade<Note> {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Note find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return fixDptID(super.find(id));
     }
 
     @GET
@@ -76,7 +76,10 @@ public class NoteFacadeREST extends AbstractFacade<Note> {
         return super.findByText(text);
     }
     
-    
+    private Note fixDptID(Note n){
+         n.setDepartment_id(n.getDepartment().getId());
+         return n;
+    }
 
     /*@GET
     @Path("{from}/{to}")

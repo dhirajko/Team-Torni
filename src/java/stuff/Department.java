@@ -5,9 +5,11 @@
  */
 package stuff;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,10 +27,12 @@ public class Department implements Serializable {
     
     private String name;
     
-    @OneToMany(mappedBy="department")
+    @OneToMany(mappedBy="department", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Users> users;
     
-    @OneToMany(mappedBy="department")
+    @OneToMany(mappedBy="department", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Note> notes;
 
     public Department() {
