@@ -8,14 +8,17 @@ let myInit = {
   }
 };
 
+/*Fetch in a nutshell*/
+
 fetch('http://10.114.32.42:8080/TorniNew/tower/users/5', myInit)
 .then(response => {
-  if(response.ok)
-    return response.json();
-  throw new Error('Network response was not ok: ' + response.statusText);
+  let resp = checkStatus(response);
+  return resp.json();
 })
-.then(json => console.log(json))
-.catch(error => console.log('bam ' + error.message));
+.then(json => {
+  console.log(json);
+})
+.catch(error => console.log('error : ' + error.message));
 
 const addUser = function() {
 
