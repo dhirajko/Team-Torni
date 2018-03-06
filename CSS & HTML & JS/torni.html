@@ -29,11 +29,12 @@
 				<nav class="navigation">
 					<ul>
 						<li>
-							<input type="text" id="search" name="search" placeholder="Search">
 							<input type="image" src="refresh.png" alt="Submit" id="refresh">
 							<input type="image" src="forward.png" alt="Submit" id="forward">
 							<input type="image" src="backward.png" alt="Submit" id="backward">
 							<input type="image" src="home.png" alt="Submit" id="home">
+							<br>
+							<input type="text" id="search" name="search" placeholder="Search">
 
 						</li>
 
@@ -70,20 +71,43 @@
 					</div>
 				</div>
 				<div class="notelist">
-					<div class="noteid">ID</div>
-					<p></p>
-					<div class="title">Title</div>
-					<p></p>
-					<div class="time">Time</div>
-					<p></p>
+					<div id="noteid">ID</div>
+					<div id="listtitle">Title</div>
+					<div id="time">Time</div>
+					<form class="list">
+						<ul>
+							<li>A</li>
+							<li>B</li>
+							<li>C</li>
+							<li>D</li>
+							<li>E</li>
+							<li>F</li>
+							<li>G</li>
+							<li>H</li>
+							<li>I</li>
+							<li>J</li>
+							<li>K</li>
+							<li>L</li>
+							<li>M</li>
+							<li>N</li>
+							<li>O</li>
+							<li>P</li>
+							<li>Q</li>
+							<li>R</li>
+							<li>S</li>
+							<li>T</li>
+							<li>U</li>
+							<li>V</li>
+						</ul>
+					</form>
 				</div>
 			</div>
 
 			<div class="info">
 				<h2 id="infotitle">Title</h2>
-				<p id ="informant">Informant</p>
-				<p id="timestamp">Timestamp</p>
-				<p id="descripton">Description</p>
+				<p id="informant">Informant: </p>
+				<p id="timestamp">Timestamp: </p>
+				<p id="description">Description: </p>
 				<button onclick="noteFinished()">Done</button>
 				<p id="closing"></p>
 			</div> 
