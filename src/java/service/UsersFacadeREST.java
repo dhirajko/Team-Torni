@@ -59,7 +59,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Users find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return fixDptID(super.find(id));
     }
 
     @GET
@@ -74,7 +74,7 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Users findByName(@PathParam("name") String name) {
-        return super.findByName(name);
+        return fixDptID(super.findByName(name));
     }
 
     /*@GET
@@ -96,4 +96,8 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
         return em;
     }
     
+    private Users fixDptID(Users u){
+         u.setDepartment_id(u.getDepartment().getId());
+         return u;
+    }
 }

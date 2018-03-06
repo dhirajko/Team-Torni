@@ -5,12 +5,14 @@
  */
 package stuff;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -30,7 +32,11 @@ public class Note implements Serializable {
     private long atimestamp;
     
     @ManyToOne
+    @JsonBackReference
     private Department department;
+    
+    @Transient
+    private int department_id;
 
     public Note() {
     }
@@ -42,6 +48,7 @@ public class Note implements Serializable {
         this.astate = astate;
         this.atimestamp = atimestamp;
         this.department = department;
+        this.department_id = department.getId();
     }
 
     public Note(Integer id, String title, String content, boolean astate, long atimestamp) {
@@ -105,5 +112,14 @@ public class Note implements Serializable {
 
     public void setDepartment(Department department) {
         this.department = department;
+        this.department_id = department.getId();
+    }
+
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
     }
 }

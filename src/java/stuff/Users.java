@@ -5,12 +5,14 @@
  */
 package stuff;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -29,7 +31,12 @@ public class Users implements Serializable {
     
     //The department which notes they will get
     @ManyToOne
+    @JsonBackReference
     private Department department;
+    
+    //@JoinColumn(name = "department_id")
+    @Transient
+    private int department_id;
 
     public Users() {
     }
@@ -40,6 +47,7 @@ public class Users implements Serializable {
         this.password = password;
         this.rights = rights;
         this.department = department;
+        this.department_id = department.getId();
     }
 
     public Users(Integer id, String name, String password, Integer rights) {
@@ -93,5 +101,14 @@ public class Users implements Serializable {
 
     public void setDepartment(Department department) {
         this.department = department;
+        this.department_id = department.getId();
+    }
+
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
     }
 }
