@@ -8,6 +8,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web" rel="stylesheet">
 	<script type="text/javascript" src="torni.js"></script>
 	<script type="text/javascript" src="notes.js"></script>
+	<script type="text/javascript" src="user.js"></script>
 </head>
 
 <body>
@@ -119,7 +120,7 @@
 			<h2>Add Note</h2>
 			<form>
 				<p>Title</p><input type="text" id="title">
-				<p>Description</p><input type="textbox" id="content">
+				<p>Description</p><textarea id="content" rows="10" cols="30"></textarea>
 				<p>Department</p>
 				<select id="department">
                 	<option value=2>Bar</option>
@@ -137,13 +138,80 @@
 		</section>
 
 		<section class="management" class="hidden">
-			<h2>User Management</h2>
-			<p>Something</p>
+			<div class="manage">
+					<div class="adduser">
+							<h2>Add User</h2>
+							<form>
+								<p>Username</p><input type="text" id="addusername">
+								<p>Password</p><input type="password" id="addpassword">
+								<p>Department</p>
+								<select id="adddepartment">
+									<option value=2>Bar</option>
+									<option value=3>Breakfast</option>
+									<option value=5>Floorcare</option>
+									<option value=6>Kitchen</option>
+									<option value=7>Meetings</option>
+									<option value=4>Reception</option>
+									<option value=1>Restaurant</option>
+								</select>
+								<br>
+								<p>Type</p>
+								<div class="radio">
+								<input type="radio" name="addrights" value="1"> Manager<br>
+								<input type="radio" name="addrights" value="0"> Worker<br>
+								</div>
+								<br>
+								<button id="addbtnuser">Add User</button>
+							</form>
+					</div>
+					<div class="edituser">
+							<h2>Edit User</h2>
+							<form>
+								<p>Username</p><input type="text" id="editusername">
+								<p>Password</p><input type="password" id="editpassword">
+								<p>Department</p>
+								<select id="departmentuser">
+									<option value=2>Bar</option>
+									<option value=3>Breakfast</option>
+									<option value=5>Floorcare</option>
+									<option value=6>Kitchen</option>
+									<option value=7>Meetings</option>
+									<option value=4>Reception</option>
+									<option value=1>Restaurant</option>
+								</select>
+								<br>
+								<p>Type</p>
+								<div class="radio">
+								<input type="radio" name="editrights" value="1"> Manager<br>
+								<input type="radio" name="editrights" value="0"> Worker<br>
+								</div>
+								<br>
+								<button id="editbtnuser">Edit User</button>
+							</form>
+					</div>
+					<div class="deleteuser">
+						<h2>Delete User</h2>
+						<form>
+							<p>Username</p>
+							<input type="text" id="deleteusername">
+							<br>
+							<br>
+							<button id="deletebtnuser">Delete User</button>
+						</form>
+					</div>
+			</div>
 		</section>
 
 		<section class="settings" class="hidden">
-			<h2>Settings</h2>
-			<p>Something</p>
+			<h2>Change password</h2>
+			<form>
+				<p>Username</p><input type="text" id="settingsusername">
+				<p>Old password</p><input type="password" id="settingsoldpassword">
+				<p>New password</p><input type="password" id="settingsnewpassword">
+				<br>
+				<br>
+				<button id="changepassword">Change password</button>
+			</form>
 		</section>
 
 		<section class="history" class="hidden">

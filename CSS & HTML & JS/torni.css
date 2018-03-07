@@ -378,13 +378,29 @@ footer {
 	display: none;
 }
 
-p {
+p, .radio {
 	color: azure;
 }
 
-.management,
 .add,
-.settings,
-.history {
+.settings {
 	text-align: center;
+}
+
+.manage {
+	display : grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "adduser edituser deleteuser";
+}
+
+.management .adduser {
+	grid-area: adduser;
+}
+
+.management .edituser {
+	grid-area: edituser;
+}
+
+.management .deleteuser {
+	grid-area: deleteuser;
 }
