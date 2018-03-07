@@ -76,6 +76,11 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     public Users findByName(@PathParam("name") String name) {
         return fixDptID(super.findByName(name));
     }
+    
+    private Users fixDptID(Users u){
+         u.setDepartment_id(u.getDepartment().getId());
+         return u;
+    }
 
     /*@GET
     @Path("{from}/{to}")
@@ -94,10 +99,5 @@ public class UsersFacadeREST extends AbstractFacade<Users> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
-    
-    private Users fixDptID(Users u){
-         u.setDepartment_id(u.getDepartment().getId());
-         return u;
     }
 }

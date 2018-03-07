@@ -4,7 +4,6 @@
 
 html {
 	border: 2px solid white;
-
 }
 
 body {
@@ -13,9 +12,32 @@ body {
 }
 
 .login {
-	display: none;
+	//display: none;
+	text-align: center;
+	align-content:  center;
+	height: 550px;
 }
-
+.login h1{
+	color: aliceblue;
+	//text-align: center;
+}
+.loginform{
+	display: inline-block;
+	height: 220px;
+	width: 350px;
+	padding: 40px;
+	background-color: rgba(25, 25, 112, 0.3);
+}
+.loginform input{
+	margin: 10px;
+	height: 35px;
+	width: 250px;
+	text-align: center;
+	border: 2px solid midnightblue;
+}
+.loginform button{
+	margin-top: 20px;
+}
 h2,
 .userbutton {
 	color: azure;
@@ -25,7 +47,8 @@ h2,
 .container {
 	height: 600px;
 	width: auto;
-	display: grid;
+	display: none;
+	//display: grid;
 	grid-gap: 0;
 	grid-template-columns: 175px 1fr 1fr;
 	grid-template-rows: 130px 1fr;
@@ -54,7 +77,7 @@ h2,
 	height: 130px;
 }
 
-h1 {
+.header h1 {
 	font-family: 'Merriweather', serif;
 	text-align: center;
 	color: azure;
@@ -205,25 +228,28 @@ h1 {
 	margin-right: 20px; //flex-grow: 1;
 }
 
-.list {
+#list {
+	text-align: left;
 	grid-area: list;
 	background-color: beige;
 	overflow: auto;
 	height: auto;
 }
 
-.list ul {
+#list ul {
 	background-color: midnightblue;
 	padding: 0;
 	margin: 0;
 }
 
-.list ul li {
+#list ul li {
 	list-style: none;
 	background-color: beige;
 	margin-top: 2px;
 }
-
+#aid{
+	text-align: right;
+}
 .info {
 	grid-area: info;
 	margin-left: 5px;
@@ -299,7 +325,7 @@ footer {
 	.notes {
 		height: 550px;
 	}
-	.list {
+	#list {
 		height: 490px;
 	}
 	#description {
@@ -329,7 +355,7 @@ footer {
 		height: 380px;
 	}
 
-	.list {
+	#list {
 		height: 420px;
 	}
 	#description {
@@ -370,18 +396,32 @@ footer {
 		height: 380px;
 	}
 }
-
-.hidden {
-	display: none;
-}
-
-p {
+p, .radio {
 	color: azure;
 }
 
-.management,
 .add,
-.settings,
-.history {
+.settings {
 	text-align: center;
+}
+.manage {
+	display : grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "adduser edituser deleteuser";
+}
+
+.management .adduser {
+	grid-area: adduser;
+}
+
+.management .edituser {
+	grid-area: edituser;
+}
+
+.management .deleteuser {
+	grid-area: deleteuser;
+}
+
+.hidden {
+	display: none;
 }
