@@ -205,25 +205,28 @@ h1 {
 	margin-right: 20px; //flex-grow: 1;
 }
 
-.list {
+#list {
+	text-align: left;
 	grid-area: list;
 	background-color: beige;
 	overflow: auto;
 	height: auto;
 }
 
-.list ul {
+#list ul {
 	background-color: midnightblue;
 	padding: 0;
 	margin: 0;
 }
 
-.list ul li {
+#list ul li {
 	list-style: none;
 	background-color: beige;
 	margin-top: 2px;
 }
-
+#aid{
+	text-align: right;
+}
 .info {
 	grid-area: info;
 	margin-left: 5px;
@@ -299,7 +302,7 @@ footer {
 	.notes {
 		height: 550px;
 	}
-	.list {
+	#list {
 		height: 490px;
 	}
 	#description {
@@ -329,7 +332,7 @@ footer {
 		height: 380px;
 	}
 
-	.list {
+	#list {
 		height: 420px;
 	}
 	#description {

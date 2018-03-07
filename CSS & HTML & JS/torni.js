@@ -57,11 +57,33 @@ function showNotes(group) {
 			return response.json();
 		})
 		.then(function (myJson) {
-			
-			console.log(myJson[0].userId);
-			document.getElementsByClassName('list').innerHTML = myJson.userId;
-			//console.log(document.getElementsByClassName('list').innerHTML);
+			let ul = document.createElement('ul');
+
+			for (i = 0; i < 5; i++) {
+				let li = document.createElement('li');
+				let aid = document.createElement('id');
+								
+				aid.id = 'aid';
+				
+				aid.innerHTML = myJson[i].userId+"|"+myJson[i].title+"|"+myJson[i].id;
+				
+				li.appendChild(aid);
+				ul.appendChild(li);
+				console.log(li);
+			}
+			document.getElementById('list').appendChild(ul);
 		});
+	//for(let i = 0; i<10; i++){
+
+	//	let li = document.createElement('li');
+
+	//	li.innerHTML = myJson[i].title;
+	//	console.log(myJson[i].title);
+	//}
+
+	//document.getElementsByClassName('list').innerHTML = myJson.userId;
+	//console.log(document.getElementsByClassName('list').innerHTML);
+
 	//}
 	//fetchNotes(change);
 }
