@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+console.log(document);
 	let elements = document.querySelectorAll(".container .menu ul li a");
 
 	for (let a of elements) {
