@@ -4,7 +4,6 @@
 
 html {
 	border: 2px solid white;
-
 }
 
 body {
@@ -13,9 +12,32 @@ body {
 }
 
 .login {
-	display: none;
+	//display: none;
+	text-align: center;
+	align-content:  center;
+	height: 550px;
 }
-
+.login h1{
+	color: aliceblue;
+	//text-align: center;
+}
+.loginform{
+	display: inline-block;
+	height: 220px;
+	width: 350px;
+	padding: 40px;
+	background-color: rgba(25, 25, 112, 0.3);
+}
+.loginform input{
+	margin: 10px;
+	height: 35px;
+	width: 250px;
+	text-align: center;
+	border: 2px solid midnightblue;
+}
+.loginform button{
+	margin-top: 20px;
+}
 h2,
 .userbutton {
 	color: azure;
@@ -25,7 +47,8 @@ h2,
 .container {
 	height: 600px;
 	width: auto;
-	display: grid;
+	display: none;
+	//display: grid;
 	grid-gap: 0;
 	grid-template-columns: 175px 1fr 1fr;
 	grid-template-rows: 130px 1fr;
@@ -54,7 +77,7 @@ h2,
 	height: 130px;
 }
 
-h1 {
+.header h1 {
 	font-family: 'Merriweather', serif;
 	text-align: center;
 	color: azure;
@@ -373,11 +396,6 @@ footer {
 		height: 380px;
 	}
 }
-
-.hidden {
-	display: none;
-}
-
 p, .radio {
 	color: azure;
 }
@@ -386,7 +404,6 @@ p, .radio {
 .settings {
 	text-align: center;
 }
-
 .manage {
 	display : grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -403,4 +420,8 @@ p, .radio {
 
 .management .deleteuser {
 	grid-area: deleteuser;
+}
+
+.hidden {
+	display: none;
 }

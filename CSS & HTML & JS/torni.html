@@ -6,23 +6,37 @@
 	<title>Torni</title>
 	<link href="torni.css" type="text/css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web" rel="stylesheet">
+	<script type="text/javascript" src="login.js"></script>
 	<script type="text/javascript" src="torni.js"></script>
 	<script type="text/javascript" src="notes.js"></script>
 	<script type="text/javascript" src="user.js"></script>
 </head>
 
 <body>
-	<div class="login" class="hidden">
+	<div class="login" name="login">
 		<h1>Welcome</h1>
+		<br>
 
-		<div class="logininfo">
-			<input type="text" name="user" placeholder="username" />
-			<input type="text" name="psw" placeholder="password" />
-			<button id="loginbutton">login</button>
-		</div>
+		<form class="loginform">
+			<input id="username" type="text" placeholder="username" required>
+			<br>
+			<input id="password" type="text" placeholder="password" required>
+			<br>
+			<button id="submit" type="button">Submit</button>
+		</form>
+
+		<!--<section id="change" class="notes" style="color:white">
+			<form action="index.html" method="post">
+				username:
+				<input id="username" type="text" name="username" placeholder="username"><br> password :
+				<input id="password" type="password" name="password"> <br>
+				<button id="abc" type="button" name="button">Submit</button>
+			</form>
+		</section>
+		<p id="error"></p>-->
 	</div>
 
-	<div class="container">
+	<div class="container" name="container">
 		<section class="head">
 			<img src="tornivalk.png" alt="logo">
 
@@ -49,10 +63,10 @@
 			<ul>
 				<li data-target-section=".notes"><a href="">Home</a></li>
 				<li data-target-section=".add"><a href="">Add note</a></li>
-				<li data-target-section=".management"><a href="">User Management</a></li>
+				<li data-target-section=".management" id="amanage"><a href="">User Management</a></li>
 				<li data-target-section=".settings"><a href="">Settings</a></li>
 				<li data-target-section=".history"><a href="">Note History</a></li>
-				<li data-target-section=".login"><a href="">Log out</a></li>
+				<li data-target-section=".login" id ="logout"><a href="">Log out</a></li>
 			</ul>
 		</nav>
 
@@ -61,15 +75,15 @@
 				<div class="drop">
 					<button class="hm" id="notesGroup">Hotel Manager</button>
 					<div class="dropdown">
-						<a id="hotelmanager" href="#" onclick = "showNotes('hotelmanager')">Hotel Manager</a>
+						<a id="hotelmanager" href="#" onclick="showNotes('hotelmanager')">Hotel Manager</a>
 						<a id="allnotes" href="#" onclick="showNotes('allnotes')">All notes</a>
-						<a id="bar" href="#" onclick = "showNotes('bar')">Bar</a>
-						<a id="breakfast" href="#" onclick = "showNotes('breakfast')">Breakfast</a>
-						<a id="floorcare" href="#" onclick = "showNotes('floorcare')">Floor care</a>
-						<a id="kitchen" href="#" onclick = "showNotes('kitchen')">Kitchen</a>
-						<a id="meetings"href="#" onclick = "showNotes('meetings')">Meetings</a>
-						<a id="reception" href="#" onclick = "showNotes('reception')">Reception</a>
-						<a id="restaurant" href="#" onclick = "showNotes('restaurant')">Restaurant</a>
+						<a id="bar" href="#" onclick="showNotes('bar')">Bar</a>
+						<a id="breakfast" href="#" onclick="showNotes('breakfast')">Breakfast</a>
+						<a id="floorcare" href="#" onclick="showNotes('floorcare')">Floor care</a>
+						<a id="kitchen" href="#" onclick="showNotes('kitchen')">Kitchen</a>
+						<a id="meetings" href="#" onclick="showNotes('meetings')">Meetings</a>
+						<a id="reception" href="#" onclick="showNotes('reception')">Reception</a>
+						<a id="restaurant" href="#" onclick="showNotes('restaurant')">Restaurant</a>
 					</div>
 				</div>
 				<div class="notelist">
@@ -81,25 +95,6 @@
 							<li>A</li>
 							<li>B</li>
 							<li>C</li>
-							<li>D</li>
-							<li>E</li>
-							<li>F</li>
-							<li>G</li>
-							<li>H</li>
-							<li>I</li>
-							<li>J</li>
-							<li>K</li>
-							<li>L</li>
-							<li>M</li>
-							<li>N</li>
-							<li>O</li>
-							<li>P</li>
-							<li>Q</li>
-							<li>R</li>
-							<li>S</li>
-							<li>T</li>
-							<li>U</li>
-							<li>V</li>
 						</ul>-->
 					</form>
 				</div>
@@ -112,7 +107,7 @@
 				<p id="description">Description: </p>
 				<button onclick="noteFinished()">Done</button>
 				<p id="closing"></p>
-			</div> 
+			</div>
 
 		</section>
 
@@ -133,7 +128,7 @@
 				</select>
 				<br>
 				<br>
-            	<button id="addbtn">Add note</button>
+				<button id="addbtn">Add note</button>
 			</form>
 		</section>
 
