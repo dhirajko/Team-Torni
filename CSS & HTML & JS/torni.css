@@ -396,16 +396,44 @@ footer {
 		height: 380px;
 	}
 }
+<<<<<<< HEAD
 p {
-	color: azure;
-}
+=======
 
-.management,
-.add,
-.settings,
-.history {
-	text-align: center;
-}
 .hidden {
 	display: none;
 }
+
+p, .radio {
+>>>>>>> dad3d90d242452906d4facd5ef167aa8ba2bad88
+	color: azure;
+}
+
+.add,
+.settings {
+	text-align: center;
+}
+<<<<<<< HEAD
+.hidden {
+	display: none;
+}
+=======
+
+.manage {
+	display : grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "adduser edituser deleteuser";
+}
+
+.management .adduser {
+	grid-area: adduser;
+}
+
+.management .edituser {
+	grid-area: edituser;
+}
+
+.management .deleteuser {
+	grid-area: deleteuser;
+}
+>>>>>>> dad3d90d242452906d4facd5ef167aa8ba2bad88

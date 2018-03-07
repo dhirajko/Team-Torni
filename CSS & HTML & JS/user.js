@@ -1,7 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-let myInit = {
+let myInit1 = {
   method : 'GET',
+  mode : 'no-cors',
+  headers: {
+    'Accept': 'application/json'
+  }
+};
+
+let myInit2 = {
+  method : 'POST',
+  mode : 'no-cors',
+  headers: {
+    'content-type': 'application/json'
+  }
+};
+
+let myInit3 = {
+  method : 'PUT',
+  mode : 'no-cors',
+  headers: {
+    'content-type': 'application/json'
+  }
+};
+
+let myInit4 = {
+  method : 'DELETE',
   mode : 'no-cors',
   headers: {
     'Accept': 'application/json'
@@ -10,7 +34,7 @@ let myInit = {
 
 /*Fetch in a nutshell*/
 
-fetch('http://10.114.32.42:8080/TorniNew/tower/users/5', myInit)
+fetch('http://10.114.32.42:8080/TorniNew/tower/users/5', myInit1)
 .then(response => {
   let resp = checkStatus(response);
   return resp.json();
@@ -20,7 +44,9 @@ fetch('http://10.114.32.42:8080/TorniNew/tower/users/5', myInit)
 })
 .catch(error => console.log('error : ' + error.message));
 
-const addUser = function() {
+
+
+const addUser = function(user) {
 
 }
 
