@@ -35,20 +35,33 @@ function noteFinished() {
 
 //This function changes whos notes are showing
 function showNotes(group) {
-	
+
 	let change = document.getElementById(group).id;
 	console.log(change);
-		
-	document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
-	
-	
-	function fetchNotes(change){
-		fetch("https://jsonplaceholder.typicode.com/todos")
-		.then(response => response.blob())
-		.then(function(myBlob){
-			change.href = "bdfbsd";
-			console.log(change.href);
-		});
-	}
-}
 
+	document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
+
+	/*
+		if(this.readyState == 4 && this.status == 200){
+			let myObj = JSON.parse(this.responseText);
+			document.getElementById('time').innerHTML = myObj.title;
+		}
+	};
+	
+	xmlhttp.open("GET", "https://jsonplaceholder.typicode.com/albums", true);
+	xmlhttp.send();
+*/
+	//function fetchNotes() {
+	fetch("https://jsonplaceholder.typicode.com/albums")
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (myJson) {
+			
+			console.log(myJson[0].userId);
+			document.getElementsByClassName('list').innerHTML = myJson.userId;
+			//console.log(document.getElementsByClassName('list').innerHTML);
+		});
+	//}
+	//fetchNotes(change);
+}
