@@ -8,14 +8,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web" rel="stylesheet">
 	<script type="text/javascript" src="login.js"></script>
 	<script type="text/javascript" src="torni.js"></script>
-<<<<<<< HEAD
-	<script type="text/javascript" src="notes.js"></script>	
-	<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
-
-=======
 	<script type="text/javascript" src="notes.js"></script>
 	<script type="text/javascript" src="user.js"></script>
->>>>>>> dad3d90d242452906d4facd5ef167aa8ba2bad88
 </head>
 
 <body>
@@ -24,9 +18,9 @@
 		<br>
 
 		<form class="loginform">
-			<input id="username" type="text" placeholder="username">
+			<input id="username" type="text" placeholder="username" required>
 			<br>
-			<input id="password" type="text" placeholder="password">
+			<input id="password" type="text" placeholder="password" required>
 			<br>
 			<button id="submit" type="button">Submit</button>
 		</form>
@@ -69,10 +63,10 @@
 			<ul>
 				<li data-target-section=".notes"><a href="">Home</a></li>
 				<li data-target-section=".add"><a href="">Add note</a></li>
-				<li data-target-section=".management"><a href="">User Management</a></li>
+				<li data-target-section=".management" id="amanage"><a href="">User Management</a></li>
 				<li data-target-section=".settings"><a href="">Settings</a></li>
 				<li data-target-section=".history"><a href="">Note History</a></li>
-				<li data-target-section=".login"><a href="">Log out</a></li>
+				<li data-target-section=".login" id ="logout"><a href="">Log out</a></li>
 			</ul>
 		</nav>
 

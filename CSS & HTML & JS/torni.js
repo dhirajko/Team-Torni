@@ -1,6 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
-console.log(document);
-	let elements = document.querySelectorAll(".container .menu ul li a");
+
+		fetch("https://jsonplaceholder.typicode.com/albums")
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (myJson) {
+				let ul = document.createElement('ul');
+
+				for (i = 0; i < 15; i++) {
+					let li = document.createElement('li');
+					let aid = document.createElement('id');
+
+					aid.id = 'aid';
+
+					aid.innerHTML = myJson[i].userId + "|" + myJson[i].title + "|" + myJson[i].id;
+
+					li.appendChild(aid);
+					ul.appendChild(li);
+					console.log(li);
+				}
+				document.getElementById('list').appendChild(ul);
+			})
+	
+
+	/*let elements = document.querySelectorAll(".container .menu ul li a");
 
 	for (let a of elements) {
 
@@ -16,7 +39,7 @@ console.log(document);
 
 			document.querySelector(target).classList.remove("hidden");
 		})
-	}
+	}*/
 
 
 });
@@ -51,28 +74,7 @@ function showNotes(group) {
 	xmlhttp.open("GET", "https://jsonplaceholder.typicode.com/albums", true);
 	xmlhttp.send();
 */
-	//function fetchNotes() {
-	fetch("https://jsonplaceholder.typicode.com/albums")
-		.then(function (response) {
-			return response.json();
-		})
-		.then(function (myJson) {
-			let ul = document.createElement('ul');
 
-			for (i = 0; i < 5; i++) {
-				let li = document.createElement('li');
-				let aid = document.createElement('id');
-								
-				aid.id = 'aid';
-				
-				aid.innerHTML = myJson[i].userId+"|"+myJson[i].title+"|"+myJson[i].id;
-				
-				li.appendChild(aid);
-				ul.appendChild(li);
-				console.log(li);
-			}
-			document.getElementById('list').appendChild(ul);
-		});
 	//for(let i = 0; i<10; i++){
 
 	//	let li = document.createElement('li');

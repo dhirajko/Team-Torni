@@ -396,16 +396,7 @@ footer {
 		height: 380px;
 	}
 }
-<<<<<<< HEAD
-p {
-=======
-
-.hidden {
-	display: none;
-}
-
 p, .radio {
->>>>>>> dad3d90d242452906d4facd5ef167aa8ba2bad88
 	color: azure;
 }
 
@@ -413,12 +404,6 @@ p, .radio {
 .settings {
 	text-align: center;
 }
-<<<<<<< HEAD
-.hidden {
-	display: none;
-}
-=======
-
 .manage {
 	display : grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -436,4 +421,7 @@ p, .radio {
 .management .deleteuser {
 	grid-area: deleteuser;
 }
->>>>>>> dad3d90d242452906d4facd5ef167aa8ba2bad88
+
+.hidden {
+	display: none;
+}
