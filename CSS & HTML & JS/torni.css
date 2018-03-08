@@ -256,20 +256,17 @@ h2,
 	height: 450px;
 }
 
-#informant {
+#infoid, #informant, #timestamp {
 	text-align: left;
 	margin: 0;
 }
 
-#timestamp {
-	text-align: left;
-	margin: 0;
-}
 
 #description {
 	text-align: left;
 	margin: 0;
-	height: 355px;
+	height: 290px;
+	overflow: auto;
 }
 
 .info button {
@@ -280,6 +277,7 @@ h2,
 	border-radius: 4px;
 	font-family: 'Titillium Web', sans-serif;
 	margin-right: 5px;
+	margin-top: 5px;
 }
 
 .all {
@@ -323,13 +321,13 @@ footer {
 		width: auto;
 	}
 	.notes {
-		height: 550px;
+		height: 580px;
 	}
 	#list {
-		height: 490px;
+		height: 520px;
 	}
 	#description {
-		height: 435px;
+		height: 350px;
 	}
 
 }
@@ -359,7 +357,7 @@ footer {
 		height: 420px;
 	}
 	#description {
-		height: 270px;
+		height: 240px;
 	}
 
 }
@@ -393,7 +391,7 @@ footer {
 	}
 
 	#description {
-		height: 380px;
+		height: 370px;
 	}
 }
 p, .radio {

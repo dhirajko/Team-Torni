@@ -1,27 +1,54 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-		fetch("https://jsonplaceholder.typicode.com/albums")
-			.then(function (response) {
-				return response.json();
+	fetch("https://jsonplaceholder.typicode.com/photos")
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (myJson) {
+			let ul = document.createElement('ul');
+
+			for (i = 0; i < 302; i++) {
+				let li = document.createElement('li');
+				let aid = document.createElement('class');
+
+				aid.name = 'aid';
+
+				aid.id = myJson[i].id;
+
+				let id = aid.id;
+
+				aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
+
+				li.appendChild(aid);
+				ul.appendChild(li);
+
+
+			}
+
+			//LOADS INFO ABOUT NOTE WHEN CLICKED
+			document.getElementById("list").addEventListener("click", function clickNote(noteid) {
+
+
+				document.getElementById('infotitle').innerHTML = myJson[event.target.id - 1].title;
+				document.getElementById('infoid').innerHTML = "ID: " + myJson[event.target.id - 1].albumId;
+				document.getElementById('informant').innerHTML = "Informant: " + myJson[event.target.id - 1].url;
+				document.getElementById('timestamp').innerHTML = "Timestamp: " + myJson[event.target.id - 1].id;
+				document.getElementById('description').innerHTML = "Description: " + myJson[event.target.id - 1].thumbnailUrl;
+
+
 			})
-			.then(function (myJson) {
-				let ul = document.createElement('ul');
+			document.getElementById('list').appendChild(ul);
 
-				for (i = 0; i < 15; i++) {
-					let li = document.createElement('li');
-					let aid = document.createElement('id');
 
-					aid.id = 'aid';
 
-					aid.innerHTML = myJson[i].userId + "|" + myJson[i].title + "|" + myJson[i].id;
 
-					li.appendChild(aid);
-					ul.appendChild(li);
-					console.log(li);
-				}
-				document.getElementById('list').appendChild(ul);
-			})
-	
+
+		})
+
+
+
+
+
 
 	/*let elements = document.querySelectorAll(".container .menu ul li a");
 
