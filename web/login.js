@@ -48,9 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
 						let target = a.parentElement.dataset.targetSection;
 
 						console.log(target);
-
-
-
 						document.querySelector(target).classList.add("hidden");
 					}
 					let show = document.getElementById("amanage").parentElement.parentElement.nextElementSibling;
@@ -61,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					for (let a of elements) {
 
-
 						a.addEventListener("click", function (event) {
 							event.preventDefault();
 
@@ -70,8 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
 								let target = a.parentElement.dataset.targetSection;
 
 								console.log(target);
-
-
 
 								document.querySelector(target).classList.add("hidden");
 							}
