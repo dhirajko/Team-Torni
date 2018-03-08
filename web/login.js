@@ -36,8 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					let par2 = par.parentElement;
 					let par3 = par2.nextElementSibling;
 
-
-
 					par2.style.display = "none";
 					par3.style.display = "grid";
 
@@ -46,15 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
 					for (let a of elements) {
 
 						let target = a.parentElement.dataset.targetSection;
-
 						console.log(target);
-						document.querySelector(target).classList.add("hidden");
+						if (!target.includes(".notes")){
+							document.querySelector(target).classList.add("hidden");
+						}
 					}
-					let show = document.getElementById("amanage").parentElement.parentElement.nextElementSibling;
-					console.log(show);
-
-					show.classList.remove("hidden");
-
 
 					for (let a of elements) {
 
