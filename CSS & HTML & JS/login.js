@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 										//CHECKS DEPARTMENT AND SHOWS DIFFERENT NOTES
-										if(psw == 3){
+										if (psw == 3) {
 											aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-											
+
 											console.log(aid.innerHTML);
 
 										}
@@ -80,49 +80,61 @@ document.addEventListener("DOMContentLoaded", function () {
 											if (myJson[i].albumId == 1) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
+
+
+												//console.log(el.classList);
+
+
+												//console.log(aid.innerHTML);
 											}
 										}
 										if (psw == 2) {
 											if (myJson[i].albumId == 2) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
 											}
 										}
 										if (psw == 8) {
 											if (myJson[i].albumId == 3) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
 											}
 										}
 										if (psw == 4) {
 											if (myJson[i].albumId == 4) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
 											}
 										}
 										if (psw == 5) {
 											if (myJson[i].albumId == 5) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
 											}
 										}
 										if (psw == 6) {
 											if (myJson[i].albumId == 6) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
 											}
 										}
 										if (psw == 7) {
 											if (myJson[i].albumId == 7) {
 												aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
-												console.log(aid.innerHTML);
+												let el = document.getElementById('allnotes').parentElement;
+												el.style.display = "none";
 											}
 										}
 
