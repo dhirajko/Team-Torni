@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 									return null;
 								}
 								return {
+									id : userId,
 									name: name,
 									password: pw,
 									rights: rights,
@@ -195,9 +196,22 @@ document.addEventListener("DOMContentLoaded", function () {
 								sendPost(postData);
 							})
 
-							const editUser = function () {
+							const sendPut = function () {
 
 							}
+
+							let edituserbtn = document.getElementById("editbtnuser");
+							edituserbtn.addEventListener("click", function (event) {
+								event.preventDefault();
+								let putData = getPutData();
+								console.log(putData);
+								if (!putData) {
+									window.alert("Please fill in all fields");
+									return;
+								}
+
+								sendPost(postData);
+							})
 
 							const deleteUser = function () {
 
