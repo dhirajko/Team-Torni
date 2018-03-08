@@ -454,6 +454,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				}
 			})
 			.catch(error => {
+				console.log('error : ' + error.message);
 				window.alert("Wrong username or password!");
 			});
 	})
