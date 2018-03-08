@@ -63,7 +63,7 @@ function showNotes(group) {
 	console.log(change);
 
 	document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
-
+}
 	/*
 		if(this.readyState == 4 && this.status == 200){
 			let myObj = JSON.parse(this.responseText);
@@ -88,4 +88,4 @@ function showNotes(group) {
 
 	//}
 	//fetchNotes(change);
-}
+
