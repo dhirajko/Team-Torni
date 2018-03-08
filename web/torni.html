@@ -20,9 +20,9 @@
 		<form class="loginform">
 			<input id="username" type="text" placeholder="username" required>
 			<br>
-			<input id="password" type="password" placeholder="password" required>
+			<input id="password" type="text" placeholder="password" required>
 			<br>
-			<button id="submit" type="button">Login</button>
+			<button id="submit" type="button">Submit</button>
 		</form>
 
 		<!--<section id="change" class="notes" style="color:white">
@@ -70,7 +70,7 @@
 			</ul>
 		</nav>
 
-		<section class="notes">
+		<section class="notes" class="hidden" name="notes">
 			<div class="mynotes">
 				<div class="drop">
 					<button class="hm" id="notesGroup">Hotel Manager</button>
@@ -102,6 +102,7 @@
 
 			<div class="info">
 				<h2 id="infotitle">Title</h2>
+				<p id="infoid">ID: </p>
 				<p id="informant">Informant: </p>
 				<p id="timestamp">Timestamp: </p>
 				<p id="description">Description: </p>
