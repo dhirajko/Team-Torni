@@ -70,7 +70,7 @@ h2,
 	height: 600px;
 	width: auto;
 	display: none;
-	//display: grid;
+	/*display: grid;*/
 	grid-gap: 0;
 	grid-template-columns: 175px 1fr 1fr;
 	grid-template-rows: 130px 1fr;
@@ -122,10 +122,11 @@ h2,
 	height: 40px;
 	border: 1px solid gray;
 	border-radius: 3px;
-	font-size: 80%; //background-image: url('search.png');
-	//background-size: 20px;
-	//background-position: 5px 5px;
-	//background-repeat: no-repeat;
+	font-size: 80%; 
+	/*background-image: url('search.png');
+	background-size: 20px;
+	background-position: 5px 5px;
+	background-repeat: no-repeat;*/
 	float: left;
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -236,16 +237,19 @@ h2,
 
 #noteid {
 	grid-area: noteid;
-	margin-left: -20px; //flex-grow: 1;
+	margin-left: -20px; 
+	/*flex-grow: 1;*/
 }
 
 #listtitle {
-	grid-area: title; //flex-grow: 3;
+	grid-area: title; 
+	/*flex-grow: 3;*/
 }
 
 #time {
 	grid-area: time;
-	margin-right: 20px; //flex-grow: 1;
+	margin-right: 20px; 
+	/*flex-grow: 1;*/
 }
 
 #list {

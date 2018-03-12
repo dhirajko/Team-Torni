@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		};
 
+		//Fetch user by its name
+
 		fetch("http://10.114.32.42:8080/TorniNew/tower/users/name/" + usr, myInit1)
 			.then(function (response) {
 				let resp = checkStatus(response);
@@ -30,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			.then(function (myJson) {
 				console.log(myJson)
 				let userobj = myJson;
+
+				//Check if name and password match with the login
 
 				if (userobj.name === usr && userobj.password === psw) {
 					let par = document.getElementById("submit").parentElement;
@@ -41,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					let elements = document.querySelectorAll(".container .menu ul li a");
 
+					//Hide all but notelist
+
 					for (let a of elements) {
 
 						let target = a.parentElement.dataset.targetSection;
@@ -49,6 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
 							document.querySelector(target).classList.add("hidden");
 						}
 					}
+
+					//Click functions to menu items
 
 					for (let a of elements) {
 
@@ -69,6 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
 							document.querySelector(target).classList.remove("hidden");
 						})
 					}
+
+					//
 
 					fetch("https://jsonplaceholder.typicode.com/photos")
 						.then(function (response) {
@@ -93,14 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 								//CHECKS DEPARTMENT AND SHOWS DIFFERENT NOTES
-								if (psw == "banaani") {
+								if (userobj.rights == 1) {
 									aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
 									console.log(aid.innerHTML);
 
 								}
 
-								if (psw == "spliton") {
+								if (userobj.rights == 0) {
 									if (myJson[i].albumId == 1) {
 										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
 
@@ -178,15 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						})
 
-					//user.js
-
-					let myInit5 = {
-						method: 'GET',
-						mode: 'no-cors',
-						headers: {
-							'Accept': 'application/json'
-						}
-					};
+					//User management
 
 					/*Fetch in a nutshell
 							
@@ -199,6 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
 						console.log(json);
 					  })
 					  .catch(error => console.log('error : ' + error.message));*/
+
+					//Add user
 
 					const getPostData = function () {
 						let name = document.getElementById("addusername").value;
@@ -254,9 +258,18 @@ document.addEventListener("DOMContentLoaded", function () {
 						sendPost(postData);
 					})
 
+					//Edit user
+
 					let edituserbtn = document.getElementById("editbtnuser");
 					edituserbtn.addEventListener("click", function (event) {
 						event.preventDefault();
+						let myInit5 = {
+							method: 'GET',
+							mode: 'no-cors',
+							headers: {
+								'Accept': 'application/json'
+							}
+						};
 						let name = document.getElementById("editusername").value;
 						let pw = document.getElementById("editpassword").value;
 						let dep = document.getElementById("editdepartment").value;
@@ -312,6 +325,8 @@ document.addEventListener("DOMContentLoaded", function () {
 							});
 					})
 
+					//Delete user
+
 					let deletebtnuser = document.getElementById("deletebtnuser");
 					deletebtnuser.addEventListener("click", function (event) {
 						event.preventDefault();
@@ -349,10 +364,51 @@ document.addEventListener("DOMContentLoaded", function () {
 							})
 					})
 
-					//notes.js
+					//Change password
+
+					let changepw = document.getElementById("changepassword");
+					changepw.addEventListener("click", function (event) {
+						event.preventDefault();
+						console.log(userobj);
+						let oldPassword = document.getElementById("settingsoldpassword").value;
+						let newPassword = document.getElementById("settingsnewpassword").value;
+						if (userobj.password == oldPassword) {
+							let body = {
+								id: userobj.id,
+								name: userobj.name,
+								password: newPassword,
+								rights: userobj.rights,
+								department: {
+									id: userobj.department_id
+								}
+							}
+							console.log(body);
+							let myInit = {
+								method: 'PUT',
+								body: JSON.stringify(body),
+								headers: {
+									'Content-Type': 'application/json'
+								}
+							};
+							fetch('http://10.114.32.42:8080/TorniNew/tower/users/' + userobj.id, myInit)
+								.then(response => {
+									let resp = checkStatus(response);
+									if (resp.status == 204) {
+										window.alert("You changed your password!");
+									}
+								})
+								.catch(error => {
+									console.log('error : ' + error.message);
+									window.alert("Something went wrong");
+								});
+						} else {
+							window.alert("Wrong password!");
+						}
+					})
+
+					//Add note
 
 					function _getPostData() {
-						// TODO these (title, content, department) are the ids for form elements Kaisa creates.
 						let title = document.getElementById('title').value;
 						let content = document.getElementById('content').value;
 						let department = document.getElementById('department').value;
@@ -374,7 +430,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					function _sendNote(postData) {
 						let xhr = new XMLHttpRequest();
 
-						// TODO /add-note is the post destination url(java side) 
 						xhr.open("POST", 'http://10.114.32.42:8080/TorniNew/tower/note', true);
 						xhr.setRequestHeader("Content-type", "application/json");
 						xhr.send(JSON.stringify(postData));
@@ -394,7 +449,6 @@ document.addEventListener("DOMContentLoaded", function () {
 						}
 					}
 
-					// TODO add-note-btn is the id for send button Kaisa creates.
 					let addNoteBtn = document.getElementById("addbtn");
 					addNoteBtn.addEventListener("click", function (event) {
 						// prevent the button from refreshing the page
@@ -413,6 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						_sendNote(postData);
 					});
 
+					//Login
 					// Check if the user is worker == 0 or manager == 1
 					if (userobj.rights === 0) {
 
@@ -427,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						location.href = "http://10.114.32.42:8080/TorniNew/torni.html";
 					})
 
-
+					//Notelist on Home
 					// PRESSING THE DONE BUTTON
 					function noteFinished() {
 						let txt;
