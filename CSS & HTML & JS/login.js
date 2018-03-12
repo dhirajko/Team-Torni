@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 								})
 								.then(function (myJson) {
 									let ul = document.createElement('ul');
+									let historyul = document.createElement('ul');
 
 									for (i = 0; i < 302; i++) {
 										let li = document.createElement('li');
@@ -154,12 +155,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 										document.getElementById('infotitle').innerHTML = myJson[event.target.id - 1].title;
 										document.getElementById('infoid').innerHTML = "ID: " + myJson[event.target.id - 1].albumId;
-										document.getElementById('informant').innerHTML = "Informant: " + myJson[event.target.id - 1].url;
+										//document.getElementById('informant').innerHTML = "Informant: " + myJson[event.target.id - 1].url;
 										document.getElementById('timestamp').innerHTML = "Timestamp: " + myJson[event.target.id - 1].id;
 										document.getElementById('description').innerHTML = "Description: " + myJson[event.target.id - 1].thumbnailUrl;
+										
+										//Checks if user wants to close the note
+										document.getElementById("donebutton").addEventListener("click", function () {
+											let txt;
+											let r = confirm("Are you sure the task is finished?");
+											if (r == true) {
+												txt = "You closed the note";
 
+												let historyli = document.createElement('li');
+												let historynote = document.createElement('id');
+												historynote.id = "hnid";
+
+												historynote.innerHTML = "jfoefjwnöev";
+
+												historyli.appendChild(historynote);
+												historyul.appendChild(historyli);
+
+											} else {
+												txt = "You pressed Cancel";
+											}
+											document.getElementById("closing").innerHTML = txt;
+											
+										})
 									})
 									document.getElementById('list').appendChild(ul);
+									document.getElementById('historylist').appendChild(historyul);
 
 								})
 							//!!!!
@@ -201,23 +225,13 @@ document.addEventListener("DOMContentLoaded", function () {
 								})
 							}
 
-							//Checks if user wants to close the note
-							document.getElementById("donebutton").addEventListener("click", function () {
-								let txt;
-								let r = confirm("Are you sure the task is finished?");
-								if (r == true) {
-									txt = "You closed the note";
-								} else {
-									txt = "You pressed Cancel";
-								}
-								document.getElementById("closing").innerHTML = txt;
-							})
+
 
 							//LOGOUT
 							document.getElementById("logout").addEventListener("click", function logout() {
-									par2.style.display = "block";
-									par3.style.display = "none";
-								})
+								par2.style.display = "block";
+								par3.style.display = "none";
+							})
 						} else {
 							document.getElementById("wrong").innerHTML = "Wrong username or password";
 

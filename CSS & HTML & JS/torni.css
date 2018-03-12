@@ -296,11 +296,10 @@ h2,
 	margin-top: 5px;
 }
 .history{
-	width: 500px;
 	display: grid;
-	grid-template-columns: 1fr 3fr 1fr;
-	grid-template-rows: 40px 30px 1fr;
-	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist";
+	grid-template-columns: 100px 300px 100px;
+	grid-template-rows: 40px 30px 1fr 1fr;
+	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist" "historyinfo historyinfo historyinfo";
 }
 .history h2{
 	margin-left: 40px;
@@ -320,7 +319,26 @@ h2,
 	text-align: center;
 }
 #historylist{
+	text-align: left;
 	grid-area: historylist;
+	overflow: auto;
+	height: auto;
+}
+#historylist ul {
+	background-color: midnightblue;
+	padding: 0;
+	margin: 0;
+}
+#historylist ul li{
+	list-style: none;
+	background-color: beige;
+	margin-top: 2px;
+	padding-left: 12px;
+}
+.historyinfo{
+	grid-area: historyinfo;
+	margin-left: 20px;
+	
 }
 .all {
 	border: 1px solid white;
@@ -371,7 +389,6 @@ footer {
 	#description {
 		height: 350px;
 	}
-
 }
 
 @media(min-width:475px) and (max-width: 599px) {
