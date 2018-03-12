@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		let usr = document.getElementById("username").value;
 		let psw = document.getElementById("password").value;
+		document.getElementById("wrong").innerHTML = "";
 
 		let myInit1 = {
 			method: 'GET',
@@ -78,9 +79,118 @@ document.addEventListener("DOMContentLoaded", function () {
 						})
 					}
 
-					//
+					//Get all notes if the user is manager
 
-					fetch("https://jsonplaceholder.typicode.com/photos")
+					if (userobj.rights == 1) {
+
+						let myInit6 = {
+							method: 'GET',
+							mode: 'no-cors',
+							headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							}
+						};
+
+						fetch('http://10.114.32.42:8080/TorniNew/tower/note', myInit6)
+							.then(response => {
+								let resp = checkStatus(response);
+								return resp.json();
+							})
+							.then(json => {
+								console.log(json);
+								let ul = document.createElement('ul');
+								for (let i of json) {
+									console.log(i);
+									let li = document.createElement('li');
+									let aid = document.createElement('class');
+
+									aid.name = 'aid';
+
+									aid.id = i.id;
+									let id = aid.id;
+
+									li.appendChild(aid);
+									ul.appendChild(li);
+
+									aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + i.atimestamp;
+
+									console.log(aid.innerHTML);
+								}
+								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
+
+									document.getElementById('infotitle').innerHTML = json[event.target.id - 1].title;
+									document.getElementById('infoid').innerHTML = "ID: " + json[event.target.id - 1].id;
+									document.getElementById('timestamp').innerHTML = "Timestamp: " + json[event.target.id - 1].atimestamp;
+									document.getElementById('description').innerHTML = "Description: " + json[event.target.id - 1].content;
+
+								})
+								document.getElementById('list').appendChild(ul);
+							})
+							.catch(error => {
+								console.log('error : ' + error.message);
+								window.alert("Can't get the notes :(");
+							});
+					}
+
+					//Get the worker's department's notes
+
+					if (userobj.rights == 0) {
+						let dep = userobj.department_id;
+						let myInit6 = {
+							method: 'GET',
+							mode: 'no-cors',
+							headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							}
+						};
+						fetch('http://10.114.32.42:8080/TorniNew/tower/department/' + dep, myInit6)
+							.then(response => {
+								let resp = checkStatus(response);
+								return resp.json();
+							})
+							.then(json => {
+								console.log(json);
+								let notes = json.notes;
+								let ul = document.createElement('ul');
+								for (let i of notes) {
+									console.log(i);
+									let li = document.createElement('li');
+									let aid = document.createElement('class');
+
+									aid.name = 'aid';
+
+									aid.id = i.id;
+									let id = aid.id;
+
+									li.appendChild(aid);
+									ul.appendChild(li);
+
+									aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + i.atimestamp;
+
+									console.log(aid.innerHTML);
+								}
+								console.log(notes);
+								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
+
+									console.log(event.target.id);
+									const index = notes.findIndex(note => note.id == event.target.id);
+
+									document.getElementById('infotitle').innerHTML = notes[index].title;
+									document.getElementById('infoid').innerHTML = "ID: " + notes[index].id;
+									document.getElementById('timestamp').innerHTML = "Timestamp: " + notes[index].atimestamp;
+									document.getElementById('description').innerHTML = "Description: " + notes[index].content;
+								})
+								document.getElementById('list').appendChild(ul);
+							})
+							.catch(error => {
+								console.log('error : ' + error.message);
+								window.alert("Can't get the notes :(");
+							});
+					}
+
+					/*fetch("https://jsonplaceholder.typicode.com/photos")
 						.then(function (response) {
 							return response.json();
 						})
@@ -187,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							document.getElementById('list').appendChild(ul);
 
 						})
-
+						*/
 					//User management
 
 					/*Fetch in a nutshell
@@ -494,9 +604,9 @@ document.addEventListener("DOMContentLoaded", function () {
 						}
 						document.getElementById("closing").innerHTML = txt;
 					}
-					
-					
-					
+
+
+
 					//CHANGES THE DROPDOWN DEPARTMENT NAME
 					function showNotes(group) {
 
@@ -506,8 +616,8 @@ document.addEventListener("DOMContentLoaded", function () {
 						document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
 					}
 					//ADD HERE!
-					
-					
+
+
 				}
 			})
 			.catch(error => {
