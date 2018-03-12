@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const timeConverter = function (UNIX_timestamp) {
 			let a = new Date(UNIX_timestamp);
-			let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+			let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 			let year = a.getFullYear();
 			let month = months[a.getMonth()];
 			let date = a.getDate();
 			let hour = a.getHours();
 			let min = a.getMinutes();
 			let sec = a.getSeconds();
-			let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+			let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
 			return time;
 		}
 
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 										li.appendChild(aid);
 										ul.appendChild(li);
-					
+
 										let time = timeConverter(i.atimestamp);
 										aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
 
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					//Function to get specific notes from user's department
 
-					const notesListDep = function() {
+					const notesListDep = function () {
 						let dep = userobj.department_id;
 						let myInit6 = {
 							method: 'GET',
@@ -170,21 +170,23 @@ document.addEventListener("DOMContentLoaded", function () {
 								let notes = json.notes;
 								let ul = document.createElement('ul');
 								for (let i of notes) {
-									let li = document.createElement('li');
-									let aid = document.createElement('class');
+									if (i.astate == false) {
+										let li = document.createElement('li');
+										let aid = document.createElement('class');
 
-									aid.name = 'aid';
+										aid.name = 'aid';
 
-									aid.id = i.id;
-									let id = aid.id;
+										aid.id = i.id;
+										let id = aid.id;
 
-									li.appendChild(aid);
-									ul.appendChild(li);
+										li.appendChild(aid);
+										ul.appendChild(li);
 
-									let time = timeConverter(i.atimestamp);
-									aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
+										let time = timeConverter(i.atimestamp);
+										aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
 
-									console.log(aid.innerHTML);
+										console.log(aid.innerHTML);
+									}
 								}
 								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
 
@@ -203,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
 								window.alert("Can't get the notes :(");
 							});
 					}
-				
+
 					//Get all the notes that are done
 
 					const notesListHistory = function () {
@@ -236,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 										li.appendChild(aid);
 										ul.appendChild(li);
-					
+
 										let time = timeConverter(i.atimestamp);
 										aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
 
@@ -300,115 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						remove.innerHTML = "";
 						notesListHistory();
 					})
-
-					/*fetch("https://jsonplaceholder.typicode.com/photos")
-						.then(function (response) {
-							return response.json();
-						})
-						.then(function (myJson) {
-							let ul = document.createElement('ul');
-
-							for (i = 0; i < 302; i++) {
-								let li = document.createElement('li');
-								let aid = document.createElement('class');
-
-								aid.name = 'aid';
-
-								aid.id = myJson[i].id;
-								let id = aid.id;
-
-								//aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-								li.appendChild(aid);
-								ul.appendChild(li);
-
-
-								//CHECKS DEPARTMENT AND SHOWS DIFFERENT NOTES
-								if (userobj.rights == 1) {
-									aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-									console.log(aid.innerHTML);
-
-								}
-
-								if (userobj.rights == 0) {
-									if (myJson[i].albumId == 1) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-
-
-										//console.log(el.classList);
-
-
-										//console.log(aid.innerHTML);
-									}
-								}
-								if (psw == 2) {
-									if (myJson[i].albumId == 2) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-									}
-								}
-								if (psw == 8) {
-									if (myJson[i].albumId == 3) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-									}
-								}
-								if (psw == 4) {
-									if (myJson[i].albumId == 4) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-									}
-								}
-								if (psw == 5) {
-									if (myJson[i].albumId == 5) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-									}
-								}
-								if (psw == 6) {
-									if (myJson[i].albumId == 6) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-									}
-								}
-								if (psw == 7) {
-									if (myJson[i].albumId == 7) {
-										aid.innerHTML = " -- " + myJson[i].albumId + " -- " + myJson[i].title + " -- " + myJson[i].id;
-
-										let el = document.getElementById('allnotes').parentElement;
-										el.style.display = "none";
-									}
-								}
-
-							}
-
-							//LOADS INFO ABOUT NOTE WHEN CLICKED
-							document.getElementById("list").addEventListener("click", function clickNote(noteid) {
-
-								document.getElementById('infotitle').innerHTML = myJson[event.target.id - 1].title;
-								document.getElementById('infoid').innerHTML = "ID: " + myJson[event.target.id - 1].albumId;
-								document.getElementById('informant').innerHTML = "Informant: " + myJson[event.target.id - 1].url;
-								document.getElementById('timestamp').innerHTML = "Timestamp: " + myJson[event.target.id - 1].id;
-								document.getElementById('description').innerHTML = "Description: " + myJson[event.target.id - 1].thumbnailUrl;
-
-							})
-							document.getElementById('list').appendChild(ul);
-
-						})
-						*/
+					
 					//User management
 
 					/*Fetch in a nutshell
@@ -694,8 +588,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						let hidemanagement = document.getElementById("amanage");
 						hidemanagement.style.display = "none";
-						let hidehistory = document.getElementById("notehistory");
-						hidehistory.style.display = "none";
 
 					}
 
