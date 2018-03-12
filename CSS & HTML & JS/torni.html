@@ -7,9 +7,9 @@
 	<link href="torni.css" type="text/css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather|Titillium+Web" rel="stylesheet">
 	<script type="text/javascript" src="login.js"></script>
-	<script type="text/javascript" src="torni.js"></script>
+	<!--<script type="text/javascript" src="torni.js"></script>
 	<script type="text/javascript" src="notes.js"></script>
-	<script type="text/javascript" src="user.js"></script>
+	<script type="text/javascript" src="user.js"></script>-->
 </head>
 
 <body>
@@ -75,7 +75,7 @@
 			<div class="mynotes">
 				<div class="drop">
 					<button class="hm" id="notesGroup">All notes</button>
-					<div class="dropdown">
+					<div class="dropdown" id = "dropdown">
 						<!--<a id="hotelmanager" href="#" onclick="showNotes('hotelmanager')">Hotel Manager</a>-->
 						<a id="allnotes" href="#">All notes</a>
 						<a id="bar" href="#">Bar</a>
@@ -91,7 +91,7 @@
 					<div id="noteid">ID</div>
 					<div id="listtitle">Title</div>
 					<div id="time">Time</div>
-					<form id="list">
+					<form id ="list" class="list">
 						<!---<ul>
 							<li>A</li>
 							<li>B</li>
@@ -102,14 +102,14 @@
 			</div>
 
 			<div class="info">
-				<h2 id="infotitle"></h2>
-				<p id="infoid"></p>
-				<p id="informant"></p>
-				<p id="timestamp"></p>
-				<p id="description"></p>
+				<h2 id="infotitle">Title</h2>
+				<p id="infoid">ID: </p>
+				<p id="informant">Informant: </p>
+				<p id="timestamp">Timestamp: </p>
+				<p id="description">Description: </p>
 				<button id="edit">Edit</button>
 				<button id="delete">Delete</button>
-				<button onclick="noteFinished()">Done</button>
+				<button id="donebutton">Done</button>
 				<p id="closing"></p>
 			</div>
 
@@ -215,10 +215,14 @@
 
 		<section class="history" class="hidden">
 			<h2>Note History</h2>
+			
 			<div id="historyid">ID</div>
 			<div id="historytitle">Title</div>
 			<div id="historytime">Closed</div>
 			<form id="historylist">
+				<ul>
+					
+				</ul>
 			</form>
 		</section>
 	</div>
