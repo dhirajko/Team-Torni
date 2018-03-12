@@ -103,7 +103,6 @@ h2,
 	letter-spacing: 10px;
 	margin-top: 8px;
 	margin-bottom: 0;
-	display: none;
 }
 
 .header ul {
@@ -297,7 +296,7 @@ h2,
 }
 .history{
 	display: grid;
-	grid-template-columns: 100px 300px 100px;
+	grid-template-columns: 100px 400px 150px;
 	grid-template-rows: 40px 30px 1fr 1fr;
 	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist" "historyinfo historyinfo historyinfo";
 }
@@ -323,6 +322,8 @@ h2,
 	grid-area: historylist;
 	overflow: auto;
 	height: auto;
+	border-bottom: 2px solid azure;
+
 }
 #historylist ul {
 	background-color: midnightblue;
@@ -335,10 +336,16 @@ h2,
 	margin-top: 2px;
 	padding-left: 12px;
 }
+#historylist ul li a{
+	display: none;
+}
 .historyinfo{
 	grid-area: historyinfo;
 	margin-left: 20px;
 	
+}
+#historynote{
+	margin-left: 15px;
 }
 .all {
 	border: 1px solid white;

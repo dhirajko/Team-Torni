@@ -145,41 +145,76 @@ document.addEventListener("DOMContentLoaded", function () {
 												el.style.display = "none";
 											}
 										}
-
-
-
 									}
 
 									//LOADS INFO ABOUT NOTE WHEN CLICKED
 									document.getElementById("list").addEventListener("click", function clickNote(noteid) {
+										let clickednote = myJson[event.target.id - 1];
 
 										document.getElementById('infotitle').innerHTML = myJson[event.target.id - 1].title;
 										document.getElementById('infoid').innerHTML = "ID: " + myJson[event.target.id - 1].albumId;
-										//document.getElementById('informant').innerHTML = "Informant: " + myJson[event.target.id - 1].url;
 										document.getElementById('timestamp').innerHTML = "Timestamp: " + myJson[event.target.id - 1].id;
 										document.getElementById('description').innerHTML = "Description: " + myJson[event.target.id - 1].thumbnailUrl;
-										
+
 										//Checks if user wants to close the note
 										document.getElementById("donebutton").addEventListener("click", function () {
-											let txt;
+
 											let r = confirm("Are you sure the task is finished?");
 											if (r == true) {
-												txt = "You closed the note";
 
 												let historyli = document.createElement('li');
 												let historynote = document.createElement('id');
-												historynote.id = "hnid";
+												let histdesc = document.createElement('a');
 
-												historynote.innerHTML = "jfoefjwnöev";
+												historynote.id = clickednote.id;
+												histdesc.text = clickednote.thumbnailUrl;
 
+												let historytitle = clickednote.title;
+
+												let date = new Date();
+												let day = date.getDate();
+												let month = date.getMonth() + 1;
+												let year = date.getFullYear();
+												if (day < 10) {
+													day = "0" + day;
+												}
+												if (month < 10) {
+													month = "0" + month;
+												}
+
+												date = day + "/" + month + "/" + year;
+
+												//HERE OUR CODE
+												historynote.innerHTML = historynote.id + " --- " + historytitle + " --- " + date;
+
+
+												//historynote.appendChild(histdesc);
 												historyli.appendChild(historynote);
 												historyul.appendChild(historyli);
 
-											} else {
-												txt = "You pressed Cancel";
+												document.getElementById('infotitle').innerHTML = "Title";
+												document.getElementById('infoid').innerHTML = "ID: ";
+												document.getElementById('timestamp').innerHTML = "Timestamp: ";
+												document.getElementById('description').innerHTML = "Description: ";
+
+												document.getElementById("historylist").addEventListener("click", function clickHistoryNote(noteid) {
+													if (event.target.id < 10) {
+														document.getElementById("ht").innerHTML = event.target.innerHTML.slice(5, event.target.innerHTML.length - 14);
+
+													} else {
+														document.getElementById("ht").innerHTML = event.target.innerHTML.slice(6, event.target.innerHTML.length - 14);
+													}
+
+													document.getElementById("hi").innerHTML = "ID: " + event.target.id;
+													document.getElementById("hts").innerHTML = "Timestamp: " + event.target.innerHTML.slice(-10);
+													document.getElementById("hd").innerHTML = "Description: ";// + event.target.histdesc;
+												})
+
+												//REMOVES FROM THE LIST
+												//code here...
 											}
-											document.getElementById("closing").innerHTML = txt;
-											
+											//document.getElementById("closing").innerHTML = txt;
+
 										})
 									})
 									document.getElementById('list').appendChild(ul);
