@@ -10,6 +10,19 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		};
 
+		const timeConverter = function (UNIX_timestamp) {
+			let a = new Date(UNIX_timestamp);
+			let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+			let year = a.getFullYear();
+			let month = months[a.getMonth()];
+			let date = a.getDate();
+			let hour = a.getHours();
+			let min = a.getMinutes();
+			let sec = a.getSeconds();
+			let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+			return time;
+		}
+
 		let usr = document.getElementById("username").value;
 		let psw = document.getElementById("password").value;
 		document.getElementById("wrong").innerHTML = "";
@@ -24,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		};
 
 		//Fetch user by it's name
-		
+
 		fetch("http://10.114.32.42:8080/TorniNew/tower/users/name/" + usr, myInit1)
 			.then(function (response) {
 				let resp = checkStatus(response);
@@ -68,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 								let target = a.parentElement.dataset.targetSection;
 
-								console.log(target);
+								/*console.log(target);*/
 
 								document.querySelector(target).classList.add("hidden");
 							}
@@ -79,10 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
 						})
 					}
 
-					//Get all notes if the user is manager
+					//Function to get all the notes that aren't done to the home section
 
-					if (userobj.rights == 1) {
-
+					const notesListAll = function () {
 						let myInit6 = {
 							method: 'GET',
 							mode: 'no-cors',
@@ -101,27 +113,30 @@ document.addEventListener("DOMContentLoaded", function () {
 								console.log(json);
 								let ul = document.createElement('ul');
 								for (let i of json) {
-									console.log(i);
-									let li = document.createElement('li');
-									let aid = document.createElement('class');
+									if (i.astate == false) {
+										let li = document.createElement('li');
+										let aid = document.createElement('class');
 
-									aid.name = 'aid';
+										aid.name = 'aid';
 
-									aid.id = i.id;
-									let id = aid.id;
+										aid.id = i.id;
+										let id = aid.id;
 
-									li.appendChild(aid);
-									ul.appendChild(li);
+										li.appendChild(aid);
+										ul.appendChild(li);
+					
+										let time = timeConverter(i.atimestamp);
+										aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
 
-									aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + i.atimestamp;
-
-									console.log(aid.innerHTML);
+										console.log(aid.innerHTML);
+									}
 								}
 								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
 
+									let time = timeConverter(json[event.target.id - 1].atimestamp);
 									document.getElementById('infotitle').innerHTML = json[event.target.id - 1].title;
 									document.getElementById('infoid').innerHTML = "ID: " + json[event.target.id - 1].id;
-									document.getElementById('timestamp').innerHTML = "Timestamp: " + json[event.target.id - 1].atimestamp;
+									document.getElementById('timestamp').innerHTML = "Timestamp: " + time;
 									document.getElementById('description').innerHTML = "Description: " + json[event.target.id - 1].content;
 
 								})
@@ -133,9 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
 							});
 					}
 
-					//Get the worker's department's notes
+					//Function to get specific notes from user's department
 
-					if (userobj.rights == 0) {
+					const notesListDep = function() {
 						let dep = userobj.department_id;
 						let myInit6 = {
 							method: 'GET',
@@ -155,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
 								let notes = json.notes;
 								let ul = document.createElement('ul');
 								for (let i of notes) {
-									console.log(i);
 									let li = document.createElement('li');
 									let aid = document.createElement('class');
 
@@ -167,19 +181,19 @@ document.addEventListener("DOMContentLoaded", function () {
 									li.appendChild(aid);
 									ul.appendChild(li);
 
-									aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + i.atimestamp;
+									let time = timeConverter(i.atimestamp);
+									aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
 
 									console.log(aid.innerHTML);
 								}
-								console.log(notes);
 								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
 
-									console.log(event.target.id);
 									const index = notes.findIndex(note => note.id == event.target.id);
+									let time = timeConverter(notes[index].atimestamp);
 
 									document.getElementById('infotitle').innerHTML = notes[index].title;
 									document.getElementById('infoid').innerHTML = "ID: " + notes[index].id;
-									document.getElementById('timestamp').innerHTML = "Timestamp: " + notes[index].atimestamp;
+									document.getElementById('timestamp').innerHTML = "Timestamp: " + time;
 									document.getElementById('description').innerHTML = "Description: " + notes[index].content;
 								})
 								document.getElementById('list').appendChild(ul);
@@ -189,6 +203,103 @@ document.addEventListener("DOMContentLoaded", function () {
 								window.alert("Can't get the notes :(");
 							});
 					}
+				
+					//Get all the notes that are done
+
+					const notesListHistory = function () {
+						let myInit6 = {
+							method: 'GET',
+							mode: 'no-cors',
+							headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							}
+						};
+
+						fetch('http://10.114.32.42:8080/TorniNew/tower/note', myInit6)
+							.then(response => {
+								let resp = checkStatus(response);
+								return resp.json();
+							})
+							.then(json => {
+								console.log(json);
+								let ul = document.createElement('ul');
+								for (let i of json) {
+									if (i.astate == true) {
+										let li = document.createElement('li');
+										let aid = document.createElement('class');
+
+										aid.name = 'aid';
+
+										aid.id = i.id;
+										let id = aid.id;
+
+										li.appendChild(aid);
+										ul.appendChild(li);
+					
+										let time = timeConverter(i.atimestamp);
+										aid.innerHTML = " -- " + i.id + " -- " + i.title + " -- " + time;
+
+										console.log(aid.innerHTML);
+									}
+								}
+								document.getElementById("historylist").addEventListener("click", function clickNote(noteid) {
+
+									let time = timeConverter(json[event.target.id - 1].atimestamp);
+									document.getElementById('ht').innerHTML = json[event.target.id - 1].title;
+									document.getElementById('hi').innerHTML = "ID: " + json[event.target.id - 1].id;
+									document.getElementById('hts').innerHTML = "Timestamp: " + time;
+									document.getElementById('hd').innerHTML = "Description: " + json[event.target.id - 1].content;
+
+								})
+								document.getElementById('historylist').appendChild(ul);
+							})
+							.catch(error => {
+								console.log('error : ' + error.message);
+								window.alert("Can't get the notes :(");
+							});
+					}
+
+					//Get all notes if the user is manager
+
+					if (userobj.rights == 1) {
+						notesListAll();
+					}
+
+					//Get the worker's department's notes
+
+					if (userobj.rights == 0) {
+						notesListDep();
+					}
+
+					//Get the history
+
+					notesListHistory();
+
+					//If they click home it updates the notelist
+
+					let notebtn = document.getElementById("homemenu");
+					notebtn.addEventListener("click", function (event) {
+						event.preventDefault();
+						let remove = document.getElementById('list');
+						remove.innerHTML = "";
+						if (userobj.rights == 1) {
+							notesListAll();
+						}
+						if (userobj.rights == 0) {
+							notesListDep();
+						}
+					})
+
+					//If they click notehistory it updates it
+
+					let historybtn = document.getElementById("notehistory");
+					notebtn.addEventListener("click", function (event) {
+						event.preventDefault();
+						let remove = document.getElementById('historylist');
+						remove.innerHTML = "";
+						notesListHistory();
+					})
 
 					/*fetch("https://jsonplaceholder.typicode.com/photos")
 						.then(function (response) {
@@ -608,10 +719,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 					//CHANGES THE DROPDOWN DEPARTMENT NAME
-					
-					document.getElementById("dropdown").addEventListener("click", function (){
-							
-							document.getElementById("notesGroup").innerHTML = event.target.innerHTML;					
+
+					document.getElementById("dropdown").addEventListener("click", function () {
+
+						document.getElementById("notesGroup").innerHTML = event.target.innerHTML;
 					})
 					/*function showNotes(group) {
 
@@ -620,8 +731,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
 					}*/
-					
-					
+
+
 					//ADD HERE!
 
 

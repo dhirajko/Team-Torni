@@ -59,8 +59,8 @@
 
 		<nav class="menu">
 			<ul>
-				<li data-target-section=".notes"><a href="">Home</a></li>
-				<li data-target-section=".add"><a href="">Add note</a></li>
+				<li data-target-section=".notes" id="homemenu"><a href="">Home</a></li>
+				<li data-target-section=".add" id="add"><a href="">Add note</a></li>
 				<li data-target-section=".management" id="amanage"><a href="">User Management</a></li>
 				<li data-target-section=".settings" id="settings"><a href="">Settings</a></li>
 				<li data-target-section=".history" id="notehistory"><a href="">Note History</a></li>
@@ -72,19 +72,7 @@
 			<div class="mynotes">
 				<div class="drop">
 					<button class="hm" id="notesGroup">All notes</button>
-<<<<<<< HEAD
 					<div class="dropdown" id="dropdown">
-						<!--<a id="hotelmanager" href="#">Hotel Manager</a>-->
-						<a>All notes</a>
-						<a>Bar</a>
-						<a>Breakfast</a>
-						<a>Floor care</a>
-						<a>Kitchen</a>
-						<a>Meetings</a>
-						<a>Reception</a>
-						<a>Restaurant</a>
-=======
-					<div class="dropdown">
 						<!--<a id="hotelmanager" href="#" onclick="showNotes('hotelmanager')">Hotel Manager</a>-->
 						<a id="allnotes" href="#">All notes</a>
 						<a id="bar" href="#">Bar</a>
@@ -94,14 +82,13 @@
 						<a id="meetings" href="#">Meetings</a>
 						<a id="reception" href="#">Reception</a>
 						<a id="restaurant" href="#">Restaurant</a>
->>>>>>> 5dbecee19614eaecfa336470a7a000a690bdc01f
 					</div>
 				</div>
 				<div class="notelist">
 					<div id="noteid">ID</div>
 					<div id="listtitle">Title</div>
 					<div id="time">Time</div>
-					<form id="list">
+					<form id="list" class="list">
 						<!---<ul>
 							<li>A</li>
 							<li>B</li>
@@ -114,12 +101,11 @@
 			<div class="info">
 				<h2 id="infotitle"></h2>
 				<p id="infoid"></p>
-				<p id="informant"></p>
 				<p id="timestamp"></p>
 				<p id="description"></p>
 				<button id="edit">Edit</button>
 				<button id="delete">Delete</button>
-				<button onclick="noteFinished()">Done</button>
+				<button id="donebutton">Done</button>
 				<p id="closing"></p>
 			</div>
 
@@ -224,11 +210,19 @@
 
 		<section class="history" class="hidden">
 			<h2>Note History</h2>
+			
 			<div id="historyid">ID</div>
 			<div id="historytitle">Title</div>
 			<div id="historytime">Closed</div>
 			<form id="historylist">
+				
 			</form>
+			<div class="historyinfo">
+					<h2 id="ht">Title</h2>
+					<p id="hi">ID: </p>
+					<p id="hts">Timestamp: </p>
+					<p id="hd">Description: </p>
+				</div>
 		</section>
 	</div>
 </body>

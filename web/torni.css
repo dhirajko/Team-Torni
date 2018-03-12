@@ -269,6 +269,7 @@ h2,
 	list-style: none;
 	background-color: beige;
 	margin-top: 2px;
+	padding-left: 12px;
 }
 #aid{
 	text-align: right;
@@ -305,15 +306,61 @@ h2,
 
 .info button {
 	float: right;
-	width: 100px;
+	width: 70px;
 	height: 30px;
 	color: midnightblue;
+	background-color: azure;
+	border: 1px solid blue;
 	border-radius: 4px;
 	font-family: 'Titillium Web', sans-serif;
 	margin-right: 5px;
 	margin-top: 5px;
 }
-
+.history{
+	display: grid;
+	grid-template-columns: 100px 300px 100px;
+	grid-template-rows: 40px 30px 1fr 1fr;
+	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist" "historyinfo historyinfo historyinfo";
+}
+.history h2{
+	margin-left: 40px;
+	grid-area: hh2;
+}
+#historyid{
+	grid-area: historyid;
+}
+#historytitle{
+	grid-area: historytitle;
+}
+#historytime{
+	grid-area: historytime;
+}
+#historyid,#historytitle,#historytime{
+	background-color: azure;
+	text-align: center;
+}
+#historylist{
+	text-align: left;
+	grid-area: historylist;
+	overflow: auto;
+	height: auto;
+}
+#historylist ul {
+	background-color: midnightblue;
+	padding: 0;
+	margin: 0;
+}
+#historylist ul li{
+	list-style: none;
+	background-color: beige;
+	margin-top: 2px;
+	padding-left: 12px;
+}
+.historyinfo{
+	grid-area: historyinfo;
+	margin-left: 20px;
+	
+}
 .all {
 	border: 1px solid white;
 	grid-area: all;
