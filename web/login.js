@@ -22,13 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
 				'Content-Type': 'application/json'
 			}
 		};
-<<<<<<< HEAD
-//
-=======
 
-		//Fetch user by its name
-
->>>>>>> 5dbecee19614eaecfa336470a7a000a690bdc01f
+		//Fetch user by it's name
+		
 		fetch("http://10.114.32.42:8080/TorniNew/tower/users/name/" + usr, myInit1)
 			.then(function (response) {
 				let resp = checkStatus(response);
