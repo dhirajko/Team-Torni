@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				'Content-Type': 'application/json'
 			}
 		};
-
+//
 		fetch("http://10.114.32.42:8080/TorniNew/tower/users/name/" + usr, myInit1)
 			.then(function (response) {
 				let resp = checkStatus(response);
@@ -441,13 +441,20 @@ document.addEventListener("DOMContentLoaded", function () {
 					
 					
 					//CHANGES THE DROPDOWN DEPARTMENT NAME
-					function showNotes(group) {
+					
+					document.getElementById("dropdown").addEventListener("click", function (){
+							
+							document.getElementById("notesGroup").innerHTML = event.target.innerHTML;					
+					})
+					/*function showNotes(group) {
 
 						let change = document.getElementById(group).id;
 						console.log(change);
 
 						document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
-					}
+					}*/
+					
+					
 					//ADD HERE!
 					
 					
