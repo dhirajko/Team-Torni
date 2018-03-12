@@ -2,41 +2,63 @@
 	box-sizing: border-box;
 }
 
-html {
-	border: 2px solid white;
-}
-
 body {
 	background-color: midnightblue;
 	font-family: 'Titillium Web', sans-serif;
 }
 
 .login {
-	//display: none;
+	/*display: none;*/
+	background-color: white;
 	text-align: center;
 	align-content:  center;
 	height: 550px;
+	background-image: url(Torni_hotelli.jpg);
+	width: 100%;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	padding: 0;
+	margin: 0;
 }
 .login h1{
 	color: aliceblue;
-	//text-align: center;
+	padding: 40px;
+	margin-top: 0; 
+	background-color: rgba(25, 25, 112, 0.3);
+	width: auto;
+	font-size: 300%;
+	/*text-align: center;*/
 }
 .loginform{
 	display: inline-block;
-	height: 220px;
+	height: 240px;
 	width: 350px;
 	padding: 40px;
-	background-color: rgba(25, 25, 112, 0.3);
+	padding-top: 30px;
+	margin-top: -20px;
+	background-color: rgba(25, 25, 112, 0.9);
 }
 .loginform input{
 	margin: 10px;
 	height: 35px;
 	width: 250px;
 	text-align: center;
-	border: 2px solid midnightblue;
 }
 .loginform button{
-	margin-top: 20px;
+	color: aliceblue;
+	margin-top: 15px;
+	background-color:rgba(0,191,255, 0.5);
+	font-family: 'Titillium Web', sans-serif;
+	width: 100px;
+	height: 40px;
+	font-size: 110%;
+	border: 1px solid aliceblue;
+	border-radius: 5px;
+}
+#wrong{
+	font-size: 100%;
+	margin-top: 10px;
 }
 h2,
 .userbutton {
@@ -48,7 +70,7 @@ h2,
 	height: 600px;
 	width: auto;
 	display: none;
-	//display: grid;
+	/*display: grid;*/
 	grid-gap: 0;
 	grid-template-columns: 175px 1fr 1fr;
 	grid-template-rows: 130px 1fr;
@@ -95,17 +117,16 @@ h2,
 	float: right;
 }
 
-.header ul li {}
-
 #search {
 	width: 200px;
 	height: 40px;
 	border: 1px solid gray;
 	border-radius: 3px;
-	font-size: 80%; //background-image: url('search.png');
-	//background-size: 20px;
-	//background-position: 5px 5px;
-	//background-repeat: no-repeat;
+	font-size: 80%; 
+	/*background-image: url('search.png');
+	background-size: 20px;
+	background-position: 5px 5px;
+	background-repeat: no-repeat;*/
 	float: left;
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -216,16 +237,19 @@ h2,
 
 #noteid {
 	grid-area: noteid;
-	margin-left: -20px; //flex-grow: 1;
+	margin-left: -20px; 
+	/*flex-grow: 1;*/
 }
 
 #listtitle {
-	grid-area: title; //flex-grow: 3;
+	grid-area: title; 
+	/*flex-grow: 3;*/
 }
 
 #time {
 	grid-area: time;
-	margin-right: 20px; //flex-grow: 1;
+	margin-right: 20px; 
+	/*flex-grow: 1;*/
 }
 
 #list {
@@ -249,6 +273,18 @@ h2,
 }
 #aid{
 	text-align: right;
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-areas: "lid ltitle ltime";
+}
+#lid{
+	grid-area: lid;
+}
+#ltitle{
+	grid-area: ltitle;
+}
+#ltime{
+	grid-area: ltime;
 }
 .info {
 	grid-area: info;
@@ -260,7 +296,10 @@ h2,
 	text-align: left;
 	margin: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5dbecee19614eaecfa336470a7a000a690bdc01f
 
 #description {
 	text-align: left;
