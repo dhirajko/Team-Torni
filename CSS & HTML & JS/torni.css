@@ -7,7 +7,6 @@ body {
 }
 
 .login {
-	//display: none;
 	background-color: white;
 	text-align: center;
 	align-content:  center;
@@ -19,8 +18,6 @@ body {
     background-size: cover;
 	padding: 0;
 	margin: 0;
-	
-	
 }
 .login h1{
 	color: aliceblue;
@@ -29,7 +26,6 @@ body {
 	background-color: rgba(25, 25, 112, 0.3);
 	width: auto;
 	font-size: 300%;
-	//text-align: center;
 }
 .loginform{
 	display: inline-block;
@@ -71,11 +67,11 @@ h2,
 	height: 600px;
 	width: auto;
 	display: none;
-	//display: grid;
 	grid-gap: 0;
 	grid-template-columns: 175px 1fr 1fr;
 	grid-template-rows: 130px 1fr;
-	grid-template-areas: "head head head" "menu notes notes";
+	grid-template-areas: "head head head" 
+	"menu notes notes";
 }
 
 .head {
@@ -118,17 +114,12 @@ h2,
 	float: right;
 }
 
-.header ul li {}
-
 #search {
 	width: 200px;
 	height: 40px;
 	border: 1px solid gray;
 	border-radius: 3px;
-	font-size: 80%; //background-image: url('search.png');
-	//background-size: 20px;
-	//background-position: 5px 5px;
-	//background-repeat: no-repeat;
+	font-size: 80%;
 	float: left;
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -239,16 +230,16 @@ h2,
 
 #noteid {
 	grid-area: noteid;
-	margin-left: -20px; //flex-grow: 1;
+	margin-left: -20px;
 }
 
 #listtitle {
-	grid-area: title; //flex-grow: 3;
+	grid-area: title;
 }
 
 #time {
 	grid-area: time;
-	margin-right: 20px; //flex-grow: 1;
+	margin-right: 20px;
 }
 
 #list {
@@ -269,22 +260,10 @@ h2,
 	list-style: none;
 	background-color: beige;
 	margin-top: 2px;
+	padding-left: 12px;
+	
 }
-#aid{
-	text-align: right;
-	display: grid;
-	grid-template-columns: 1fr 4fr 1fr;
-	grid-template-areas: "lid ltitle ltime";
-}
-#lid{
-	grid-area: lid;
-}
-#ltitle{
-	grid-area: ltitle;
-}
-#ltime{
-	grid-area: ltime;
-}
+
 .info {
 	grid-area: info;
 	margin-left: 5px;
@@ -306,15 +285,61 @@ h2,
 
 .info button {
 	float: right;
-	width: 100px;
+	width: 70px;
 	height: 30px;
 	color: midnightblue;
+	background-color: azure;
+	border: 1px solid blue;
 	border-radius: 4px;
 	font-family: 'Titillium Web', sans-serif;
 	margin-right: 5px;
 	margin-top: 5px;
 }
-
+.history{
+	display: grid;
+	grid-template-columns: 100px 300px 100px;
+	grid-template-rows: 40px 30px 1fr 1fr;
+	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist" "historyinfo historyinfo historyinfo";
+}
+.history h2{
+	margin-left: 40px;
+	grid-area: hh2;
+}
+#historyid{
+	grid-area: historyid;
+}
+#historytitle{
+	grid-area: historytitle;
+}
+#historytime{
+	grid-area: historytime;
+}
+#historyid,#historytitle,#historytime{
+	background-color: azure;
+	text-align: center;
+}
+#historylist{
+	text-align: left;
+	grid-area: historylist;
+	overflow: auto;
+	height: auto;
+}
+#historylist ul {
+	background-color: midnightblue;
+	padding: 0;
+	margin: 0;
+}
+#historylist ul li{
+	list-style: none;
+	background-color: beige;
+	margin-top: 2px;
+	padding-left: 12px;
+}
+.historyinfo{
+	grid-area: historyinfo;
+	margin-left: 20px;
+	
+}
 .all {
 	border: 1px solid white;
 	grid-area: all;
@@ -364,7 +389,6 @@ footer {
 	#description {
 		height: 350px;
 	}
-
 }
 
 @media(min-width:475px) and (max-width: 599px) {
