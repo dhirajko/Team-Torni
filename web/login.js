@@ -418,6 +418,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						let hidemanagement = document.getElementById("amanage");
 						hidemanagement.style.display = "none";
+						let hidehistory = document.getElementById("notehistory");
+						hidehistory.style.display = "none";
 
 					}
 
@@ -455,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			})
 			.catch(error => {
 				console.log('error : ' + error.message);
-				window.alert("Wrong username or password!");
+				document.getElementById("wrong").innerHTML = "Wrong username or password";
 			});
 	})
 });

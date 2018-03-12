@@ -11,7 +11,7 @@
 
 <body>
 	<div class="login" name="login">
-		<h1>Welcome</h1>
+		<h1>Solo Sokos Hotel Torni</h1>
 		<br>
 
 		<form class="loginform">
@@ -19,7 +19,8 @@
 			<br>
 			<input id="password" type="password" placeholder="password" required>
 			<br>
-			<button id="submit" type="button">Sign in</button>
+			<button id="submit" type="button">LOGIN</button>
+			<p id="wrong"></p>
 		</form>
 
 		<!--<section id="change" class="notes" style="color:white">
@@ -61,8 +62,8 @@
 				<li data-target-section=".notes"><a href="">Home</a></li>
 				<li data-target-section=".add"><a href="">Add note</a></li>
 				<li data-target-section=".management" id="amanage"><a href="">User Management</a></li>
-				<li data-target-section=".settings"><a href="">Settings</a></li>
-				<li data-target-section=".history"><a href="">Note History</a></li>
+				<li data-target-section=".settings" id="settings"><a href="">Settings</a></li>
+				<li data-target-section=".history" id="notehistory"><a href="">Note History</a></li>
 				<li data-target-section=".login" id ="logout"><a href="">Log out</a></li>
 			</ul>
 		</nav>
@@ -73,14 +74,14 @@
 					<button class="hm" id="notesGroup">All notes</button>
 					<div class="dropdown">
 						<!--<a id="hotelmanager" href="#" onclick="showNotes('hotelmanager')">Hotel Manager</a>-->
-						<a id="allnotes" href="#" onclick="showNotes('allnotes')">All notes</a>
-						<a id="bar" href="#" onclick="showNotes('bar')">Bar</a>
-						<a id="breakfast" href="#" onclick="showNotes('breakfast')">Breakfast</a>
-						<a id="floorcare" href="#" onclick="showNotes('floorcare')">Floor care</a>
-						<a id="kitchen" href="#" onclick="showNotes('kitchen')">Kitchen</a>
-						<a id="meetings" href="#" onclick="showNotes('meetings')">Meetings</a>
-						<a id="reception" href="#" onclick="showNotes('reception')">Reception</a>
-						<a id="restaurant" href="#" onclick="showNotes('restaurant')">Restaurant</a>
+						<a id="allnotes" href="#">All notes</a>
+						<a id="bar" href="#">Bar</a>
+						<a id="breakfast" href="#">Breakfast</a>
+						<a id="floorcare" href="#">Floor care</a>
+						<a id="kitchen" href="#">Kitchen</a>
+						<a id="meetings" href="#">Meetings</a>
+						<a id="reception" href="#">Reception</a>
+						<a id="restaurant" href="#">Restaurant</a>
 					</div>
 				</div>
 				<div class="notelist">
@@ -103,6 +104,8 @@
 				<p id="informant"></p>
 				<p id="timestamp"></p>
 				<p id="description"></p>
+				<button id="edit">Edit</button>
+				<button id="delete">Delete</button>
 				<button onclick="noteFinished()">Done</button>
 				<p id="closing"></p>
 			</div>
@@ -196,9 +199,8 @@
 		</section>
 
 		<section class="settings" class="hidden">
-			<h2>Change password</h2>
+			<h2>Change your password</h2>
 			<form>
-				<p>Username</p><input type="text" id="settingsusername">
 				<p>Old password</p><input type="password" id="settingsoldpassword">
 				<p>New password</p><input type="password" id="settingsnewpassword">
 				<br>
@@ -209,7 +211,11 @@
 
 		<section class="history" class="hidden">
 			<h2>Note History</h2>
-			<p>Under construction</p>
+			<div id="historyid">ID</div>
+			<div id="historytitle">Title</div>
+			<div id="historytime">Closed</div>
+			<form id="historylist">
+			</form>
 		</section>
 	</div>
 </body>

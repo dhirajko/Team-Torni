@@ -2,41 +2,63 @@
 	box-sizing: border-box;
 }
 
-html {
-	border: 2px solid white;
-}
-
 body {
 	background-color: midnightblue;
 	font-family: 'Titillium Web', sans-serif;
 }
 
 .login {
-	//display: none;
+	/*display: none;*/
+	background-color: white;
 	text-align: center;
 	align-content:  center;
 	height: 550px;
+	background-image: url(Torni_hotelli.jpg);
+	width: 100%;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	padding: 0;
+	margin: 0;
 }
 .login h1{
 	color: aliceblue;
-	//text-align: center;
+	padding: 40px;
+	margin-top: 0; 
+	background-color: rgba(25, 25, 112, 0.3);
+	width: auto;
+	font-size: 300%;
+	/*text-align: center;*/
 }
 .loginform{
 	display: inline-block;
-	height: 220px;
+	height: 240px;
 	width: 350px;
 	padding: 40px;
-	background-color: rgba(25, 25, 112, 0.3);
+	padding-top: 30px;
+	margin-top: -20px;
+	background-color: rgba(25, 25, 112, 0.9);
 }
 .loginform input{
 	margin: 10px;
 	height: 35px;
 	width: 250px;
 	text-align: center;
-	border: 2px solid midnightblue;
 }
 .loginform button{
-	margin-top: 20px;
+	color: aliceblue;
+	margin-top: 15px;
+	background-color:rgba(0,191,255, 0.5);
+	font-family: 'Titillium Web', sans-serif;
+	width: 100px;
+	height: 40px;
+	font-size: 110%;
+	border: 1px solid aliceblue;
+	border-radius: 5px;
+}
+#wrong{
+	font-size: 100%;
+	margin-top: 10px;
 }
 h2,
 .userbutton {
@@ -94,8 +116,6 @@ h2,
 	list-style-type: none;
 	float: right;
 }
-
-.header ul li {}
 
 #search {
 	width: 200px;
@@ -249,6 +269,18 @@ h2,
 }
 #aid{
 	text-align: right;
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-areas: "lid ltitle ltime";
+}
+#lid{
+	grid-area: lid;
+}
+#ltitle{
+	grid-area: ltitle;
+}
+#ltime{
+	grid-area: ltime;
 }
 .info {
 	grid-area: info;
@@ -256,12 +288,7 @@ h2,
 	height: 450px;
 }
 
-#informant {
-	text-align: left;
-	margin: 0;
-}
-
-#timestamp {
+#infoid, #informant, #timestamp {
 	text-align: left;
 	margin: 0;
 }
@@ -269,7 +296,8 @@ h2,
 #description {
 	text-align: left;
 	margin: 0;
-	height: 355px;
+	height: 290px;
+	overflow: auto;
 }
 
 .info button {
@@ -280,6 +308,7 @@ h2,
 	border-radius: 4px;
 	font-family: 'Titillium Web', sans-serif;
 	margin-right: 5px;
+	margin-top: 5px;
 }
 
 .all {
@@ -323,13 +352,13 @@ footer {
 		width: auto;
 	}
 	.notes {
-		height: 550px;
+		height: 580px;
 	}
 	#list {
-		height: 490px;
+		height: 520px;
 	}
 	#description {
-		height: 435px;
+		height: 350px;
 	}
 
 }
@@ -359,7 +388,7 @@ footer {
 		height: 420px;
 	}
 	#description {
-		height: 270px;
+		height: 240px;
 	}
 
 }
@@ -393,7 +422,7 @@ footer {
 	}
 
 	#description {
-		height: 380px;
+		height: 370px;
 	}
 }
 p, .radio {
