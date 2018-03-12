@@ -53,7 +53,7 @@ function noteFinished() {
 }
 
 //This function changes whos notes are showing
-function showNotes(group) {
+/*function showNotes(group) {
 
 	let change = document.getElementById(group).id;
 	console.log(change);
@@ -61,4 +61,8 @@ function showNotes(group) {
 	document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
 
 
-}
+}*/
+document.getElementById('dropdown').addEventListener("click", function() {
+
+	document.getElementById('notesGroup').innerHTML = event.target.innerHTML;
+})

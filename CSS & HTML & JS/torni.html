@@ -14,15 +14,16 @@
 
 <body>
 	<div class="login" name="login">
-		<h1>Welcome</h1>
+		<h1>Solo Sokos Hotel Torni</h1>
 		<br>
 
 		<form class="loginform">
 			<input id="username" type="text" placeholder="username" required>
 			<br>
-			<input id="password" type="text" placeholder="password" required>
+			<input id="password" type="password" placeholder="password" required>
 			<br>
-			<button id="submit" type="button">Submit</button>
+			<button id="submit" type="button">LOGIN</button>
+			<p id="wrong"></p>
 		</form>
 
 		<!--<section id="change" class="notes" style="color:white">
@@ -66,7 +67,7 @@
 				<li data-target-section=".management" id="amanage"><a href="">User Management</a></li>
 				<li data-target-section=".settings"><a href="">Settings</a></li>
 				<li data-target-section=".history"><a href="">Note History</a></li>
-				<li data-target-section=".login" id ="logout"><a href="">Log out</a></li>
+				<li data-target-section=".login" id="logout"><a href="">Log out</a></li>
 			</ul>
 		</nav>
 
@@ -76,14 +77,14 @@
 					<button class="hm" id="notesGroup">All notes</button>
 					<div class="dropdown">
 						<!--<a id="hotelmanager" href="#" onclick="showNotes('hotelmanager')">Hotel Manager</a>-->
-						<a id="allnotes" href="#" onclick="showNotes('allnotes')">All notes</a>
-						<a id="bar" href="#" onclick="showNotes('bar')">Bar</a>
-						<a id="breakfast" href="#" onclick="showNotes('breakfast')">Breakfast</a>
-						<a id="floorcare" href="#" onclick="showNotes('floorcare')">Floor care</a>
-						<a id="kitchen" href="#" onclick="showNotes('kitchen')">Kitchen</a>
-						<a id="meetings" href="#" onclick="showNotes('meetings')">Meetings</a>
-						<a id="reception" href="#" onclick="showNotes('reception')">Reception</a>
-						<a id="restaurant" href="#" onclick="showNotes('restaurant')">Restaurant</a>
+						<a id="allnotes" href="#">All notes</a>
+						<a id="bar" href="#">Bar</a>
+						<a id="breakfast" href="#">Breakfast</a>
+						<a id="floorcare" href="#">Floor care</a>
+						<a id="kitchen" href="#">Kitchen</a>
+						<a id="meetings" href="#">Meetings</a>
+						<a id="reception" href="#">Reception</a>
+						<a id="restaurant" href="#">Restaurant</a>
 					</div>
 				</div>
 				<div class="notelist">
@@ -106,6 +107,8 @@
 				<p id="informant"></p>
 				<p id="timestamp"></p>
 				<p id="description"></p>
+				<button id="edit">Edit</button>
+				<button id="delete">Delete</button>
 				<button onclick="noteFinished()">Done</button>
 				<p id="closing"></p>
 			</div>
@@ -135,13 +138,13 @@
 
 		<section class="management" class="hidden">
 			<div class="manage">
-					<div class="adduser">
-							<h2>Add User</h2>
-							<form>
-								<p>Username</p><input type="text" id="addusername">
-								<p>Password</p><input type="password" id="addpassword">
-								<p>Department</p>
-								<select id="adddepartment">
+				<div class="adduser">
+					<h2>Add User</h2>
+					<form>
+						<p>Username</p><input type="text" id="addusername">
+						<p>Password</p><input type="password" id="addpassword">
+						<p>Department</p>
+						<select id="adddepartment">
 									<option value=2>Bar</option>
 									<option value=3>Breakfast</option>
 									<option value=5>Floorcare</option>
@@ -150,23 +153,23 @@
 									<option value=4>Reception</option>
 									<option value=1>Restaurant</option>
 								</select>
-								<br>
-								<p>Type</p>
-								<div class="radio">
-								<input type="radio" name="addrights" value="1"> Manager<br>
-								<input type="radio" name="addrights" value="0" checked> Worker<br>
-								</div>
-								<br>
-								<button id="addbtnuser">Add User</button>
-							</form>
-					</div>
-					<div class="edituser">
-							<h2>Edit User</h2>
-							<form>
-								<p>Username</p><input type="text" id="editusername">
-								<p>Password</p><input type="password" id="editpassword">
-								<p>Department</p>
-								<select id="editdepartment">
+						<br>
+						<p>Type</p>
+						<div class="radio">
+							<input type="radio" name="addrights" value="1"> Manager<br>
+							<input type="radio" name="addrights" value="0" checked> Worker<br>
+						</div>
+						<br>
+						<button id="addbtnuser">Add User</button>
+					</form>
+				</div>
+				<div class="edituser">
+					<h2>Edit User</h2>
+					<form>
+						<p>Username</p><input type="text" id="editusername">
+						<p>Password</p><input type="password" id="editpassword">
+						<p>Department</p>
+						<select id="editdepartment">
 									<option value=2>Bar</option>
 									<option value=3>Breakfast</option>
 									<option value=5>Floorcare</option>
@@ -175,26 +178,26 @@
 									<option value=4>Reception</option>
 									<option value=1>Restaurant</option>
 								</select>
-								<br>
-								<p>Type</p>
-								<div class="radio">
-								<input type="radio" name="editrights" value="1"> Manager<br>
-								<input type="radio" name="editrights" value="0" checked> Worker<br>
-								</div>
-								<br>
-								<button id="editbtnuser">Edit User</button>
-							</form>
-					</div>
-					<div class="deleteuser">
-						<h2>Delete User</h2>
-						<form>
-							<p>Username</p>
-							<input type="text" id="deleteusername">
-							<br>
-							<br>
-							<button id="deletebtnuser">Delete User</button>
-						</form>
-					</div>
+						<br>
+						<p>Type</p>
+						<div class="radio">
+							<input type="radio" name="editrights" value="1"> Manager<br>
+							<input type="radio" name="editrights" value="0" checked> Worker<br>
+						</div>
+						<br>
+						<button id="editbtnuser">Edit User</button>
+					</form>
+				</div>
+				<div class="deleteuser">
+					<h2>Delete User</h2>
+					<form>
+						<p>Username</p>
+						<input type="text" id="deleteusername">
+						<br>
+						<br>
+						<button id="deletebtnuser">Delete User</button>
+					</form>
+				</div>
 			</div>
 		</section>
 
@@ -212,7 +215,11 @@
 
 		<section class="history" class="hidden">
 			<h2>Note History</h2>
-			<p>Something</p>
+			<div id="historyid">ID</div>
+			<div id="historytitle">Title</div>
+			<div id="historytime">Closed</div>
+			<form id="historylist">
+			</form>
 		</section>
 	</div>
 </body>
