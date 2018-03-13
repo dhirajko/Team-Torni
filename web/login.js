@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+	let clickedNote;
+
 	document.getElementById("submit").addEventListener("click", function clicklogin() {
 
 		const checkStatus = function (response) {
@@ -135,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 									event.preventDefault();
 									let time = timeConverter(json[event.target.id - 1].atimestamp);
+									clickedNote = json[event.target.id - 1].id;
 									document.getElementById('infotitle').innerHTML = json[event.target.id - 1].title;
 									document.getElementById('infoid').innerHTML = "ID: " + json[event.target.id - 1].id;
 									document.getElementById('timestamp').innerHTML = "Timestamp: " + time;
@@ -194,11 +197,13 @@ document.addEventListener("DOMContentLoaded", function () {
 									event.preventDefault();
 									const index = notes.findIndex(note => note.id == event.target.id);
 									let time = timeConverter(notes[index].atimestamp);
+									clickedNote = notes[index].id;
 
 									document.getElementById('infotitle').innerHTML = notes[index].title;
 									document.getElementById('infoid').innerHTML = "ID: " + notes[index].id;
 									document.getElementById('timestamp').innerHTML = "Timestamp: " + time;
 									document.getElementById('description').innerHTML = "Description: " + notes[index].content;
+
 								})
 								document.getElementById('list').appendChild(ul);
 							})
@@ -268,12 +273,130 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					if (userobj.rights == 1) {
 						notesListAll();
+						document.getElementById("donebutton").addEventListener("click", function () {
+							event.preventDefault();
+							let r = confirm("Are you sure the task is finished?");
+							if (r == true) {
+								let myInit8 = {
+									method: 'GET',
+									mode: 'no-cors',
+									headers: {
+										'Accept': 'application/json',
+										'Content-Type': 'application/json'
+									}
+								};
+								
+								console.log(clickedNote)
+	
+								fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + clickedNote, myInit8)
+									.then(response => {
+										let resp = checkStatus(response);
+										return resp.json();
+									})
+									.then(json => {
+										console.log(json);
+										let note = json;
+										let body = {
+											id: note.id,
+											title: note.title,
+											content: note.content,
+											astate: true,
+											atimestamp: Date.now(),
+											department: {
+												id: note.department_id
+											}
+										}
+										console.log(body);
+										let myInit9 = {
+											method: 'PUT',
+											body: JSON.stringify(body),
+											headers: {
+												'Content-Type': 'application/json'
+											}
+										};
+										fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + note.id, myInit9)
+											.then(response => {
+												let resp = checkStatus(response);
+												if (resp.status == 204) {
+													window.alert("You Finished the note!");
+												}
+											})
+											.catch(error => {
+												console.log('error : ' + error.message);
+												window.alert("Can't finish the note");
+											});
+									})
+									.catch(error => {
+										console.log('error : ' + error.message);
+										window.alert("Can't get the note you're trying to finish");
+									});
+							}
+						})
 					}
 
 					//Get the worker's department's notes
 
 					if (userobj.rights == 0) {
 						notesListDep();
+						document.getElementById("donebutton").addEventListener("click", function () {
+							event.preventDefault();
+							let r = confirm("Are you sure the task is finished?");
+							if (r == true) {
+								let myInit8 = {
+									method: 'GET',
+									mode: 'no-cors',
+									headers: {
+										'Accept': 'application/json',
+										'Content-Type': 'application/json'
+									}
+								};
+								
+								console.log(clickedNote)
+	
+								fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + clickedNote, myInit8)
+									.then(response => {
+										let resp = checkStatus(response);
+										return resp.json();
+									})
+									.then(json => {
+										console.log(json);
+										let note = json;
+										let body = {
+											id: note.id,
+											title: note.title,
+											content: note.content,
+											astate: true,
+											atimestamp: Date.now(),
+											department: {
+												id: note.department_id
+											}
+										}
+										console.log(body);
+										let myInit9 = {
+											method: 'PUT',
+											body: JSON.stringify(body),
+											headers: {
+												'Content-Type': 'application/json'
+											}
+										};
+										fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + note.id, myInit9)
+											.then(response => {
+												let resp = checkStatus(response);
+												if (resp.status == 204) {
+													window.alert("You Finished the note!");
+												}
+											})
+											.catch(error => {
+												console.log('error : ' + error.message);
+												window.alert("Can't finish the note");
+											});
+									})
+									.catch(error => {
+										console.log('error : ' + error.message);
+										window.alert("Can't get the note you're trying to finish");
+									});
+							}
+						})	
 					}
 
 					//Get the history
@@ -304,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						remove.innerHTML = "";
 						notesListHistory();
 					})
-					
+
 					//User management
 
 					/*Fetch in a nutshell
@@ -625,72 +748,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
 					}*/
-
-
-					//ADD HERE!
-
-					//Done button
-
-					document.getElementById("donebutton").addEventListener("click", function () {
-						event.preventDefault();
-						let r = confirm("Are you sure the task is finished?");
-						if (r == true) {
-							let myInit8 = {
-								method: 'GET',
-								mode: 'no-cors',
-								headers: {
-									'Accept': 'application/json',
-									'Content-Type': 'application/json'
-								}
-							};
-							let temp = document.getElementById("infoid").value;
-							console.log(temp);
-							let clickedNote = temp.slice(4);
-							console.log(clickedNote);
-	
-							fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + clickedNote, myInit8)
-								.then(response => {
-									let resp = checkStatus(response);
-									return resp.json();
-								})
-								.then(json => {
-									console.log(json);
-									let note = json;
-									let body = {
-										id : note.id,
-										title : note.title,
-										content : note.content,
-										astate : true,
-										atimestamp : Date.now(),
-										department : {id : note.department_id}
-									}
-									console.log(body);
-									let myInit9 = {
-										method: 'PUT',
-										body: JSON.stringify(body),
-										headers: {
-											'Content-Type': 'application/json'
-										}
-									};
-									fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + note.id, myInit9)
-										.then(response => {
-											let resp = checkStatus(response);
-											if (resp.status == 204) {
-												window.alert("You Finished the note!");
-											}
-										})
-										.catch(error => {
-											console.log('error : ' + error.message);
-											window.alert("Can't finish the note");
-										});
-								})
-								.catch(error => {
-									console.log('error : ' + error.message);
-									window.alert("Can't get the note you're trying to finish");
-								});
-						}
-					})
-
+					
+				} else {
+					document.getElementById("wrong").innerHTML = "Wrong username or password";
 				}
 			})
 			.catch(error => {
