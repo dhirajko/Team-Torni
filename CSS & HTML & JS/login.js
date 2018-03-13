@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							show.classList.remove("hidden");
 
 							//!!!
+							//CREATES NOTELIST
 							fetch("https://jsonplaceholder.typicode.com/photos")
 								.then(function (response) {
 									return response.json();

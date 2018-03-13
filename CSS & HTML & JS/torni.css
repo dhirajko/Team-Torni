@@ -10,7 +10,7 @@ body {
 	background-color: white;
 	text-align: center;
 	align-content:  center;
-	height: 550px;
+	height: 600px;
 	background-image: url(Torni_hotelli.jpg);
 	width: 100%;
 	background-position: center;
@@ -97,12 +97,14 @@ h2,
 }
 
 .header h1 {
+	font-size: 150%;
 	font-family: 'Merriweather', serif;
 	text-align: center;
 	color: azure;
 	letter-spacing: 10px;
 	margin-top: 8px;
 	margin-bottom: 0;
+	
 }
 
 .header ul {
@@ -221,7 +223,7 @@ h2,
 .notelist {
 	background-color: snow;
 	display: grid;
-	height: 445px;
+	height: 400px;
 	grid-template-columns: 1fr 3fr 1fr;
 	grid-template-rows: 25px auto;
 	grid-template-areas: "noteid title time" "list list list";
@@ -294,9 +296,89 @@ h2,
 	margin-right: 5px;
 	margin-top: 5px;
 }
+.add{
+	margin-left: 20px;
+}
+.add h2{
+	margin-left: 40px;
+}
+#title{
+	width: 100%;
+}
+#department{
+	font-family: 'Titillium Web', sans-serif;
+}
+#addbtn{
+	width: 70px;
+	height: 30px;
+	color: midnightblue;
+	background-color: azure;
+	border: 1px solid blue;
+	border-radius: 4px;
+	font-family: 'Titillium Web', sans-serif;
+	margin-top: -5px;
+}
+p, .radio {
+	color: azure;
+}
+
+.manage {
+	width: 500px;
+	display: grid;
+	grid-gap: 15px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "adduser edituser deleteuser";
+}
+.manage h2{
+	margin-left: 20px;
+}
+.adduser {
+	grid-area: adduser;
+	
+}
+.adduser form, .edituser form, .deleteuser form {
+	background-color: rgba(220,220,220, 0.3);
+	padding: 10px;
+	padding-top: 5px;
+}
+.adduser form button, .edituser form button, .deleteuser form button{
+	width: 90px;
+	height: 30px;
+	color: midnightblue;
+	background-color: azure;
+	border: 1px solid blue;
+	border-radius: 4px;
+	font-family: 'Titillium Web', sans-serif;
+	
+}
+.edituser {
+	grid-area: edituser;
+}
+
+.deleteuser {
+	grid-area: deleteuser;
+}
+
+.settings {
+	text-align: left;
+	margin-left: 20px;
+}
+.settings h2{
+	margin-left: 40px;
+}
+#changepassword{
+	width: 70px;
+	height: 30px;
+	color: midnightblue;
+	background-color: azure;
+	border: 1px solid blue;
+	border-radius: 4px;
+	font-family: 'Titillium Web', sans-serif;
+	
+}
 .history{
 	display: grid;
-	grid-template-columns: 100px 400px 150px;
+	grid-template-columns: 70px 350px 100px;
 	grid-template-rows: 40px 30px 1fr 1fr;
 	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist" "historyinfo historyinfo historyinfo";
 }
@@ -347,11 +429,6 @@ h2,
 #historynote{
 	margin-left: 15px;
 }
-.all {
-	border: 1px solid white;
-	grid-area: all;
-}
-
 footer {
 	border: 1px solid white;
 	grid-area: foot;
@@ -379,6 +456,9 @@ footer {
 		grid-template-rows: 0.5fr 0.5fr 2fr;
 		grid-template-areas: "head head" "menu menu" "notes notes";
 	}
+	.header h1{
+		font-size: 120%;
+	}
 	.menu {
 		margin: 0;
 		height: auto;
@@ -396,6 +476,21 @@ footer {
 	#description {
 		height: 350px;
 	}
+	.add{
+		width: 385px;
+	}
+	#title{
+		width: 100%;
+	}
+	.manage {
+	width: 400px;
+	display : grid;
+	grid-gap: 10px;
+	
+	}
+	.history{
+		grid-template-columns: 60px 240px 80px;
+	}
 }
 
 @media(min-width:475px) and (max-width: 599px) {
@@ -404,6 +499,9 @@ footer {
 		grid-template-columns: 1fr;
 		grid-template-rows: 130px 1fr 5fr;
 		grid-template-areas: "head" "menu" "notes";
+	}
+	.header h1{
+		font-size: 100%;
 	}
 	.menu {
 		height: auto;
@@ -425,6 +523,19 @@ footer {
 	#description {
 		height: 240px;
 	}
+	.add{
+		width: 385px;
+	}
+	.manage {
+		width: 400px;
+		display : grid;
+		grid-gap: 10px;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-areas: "adduser edituser""deleteuser deleteuser";
+		}
+	.history{
+		grid-template-columns: 45px 195px 65px;
+	}
 
 }
 
@@ -441,6 +552,12 @@ footer {
 	}
 	.container .head img {
 		margin: auto;
+	}
+	.header{
+		height: 140%;
+	}
+	.header h1{
+		font-size: 80%;
 	}
 	.menu {
 		margin: 0;
@@ -459,33 +576,22 @@ footer {
 	#description {
 		height: 370px;
 	}
+	.add{
+		width: 240px;
+	}
+	#content{
+		width: 240px;
+	}
+	.manage {
+		width: 200px;
+		display : grid;
+		grid-gap: 10px;
+		grid-template-areas: "adduser""edituser""deleteuser";
+		}
+	.history{
+		grid-template-columns: 35px 175px 50px;
+	}
 }
-p, .radio {
-	color: azure;
-}
-
-.add,
-.settings {
-	text-align: center;
-}
-.manage {
-	display : grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-areas: "adduser edituser deleteuser";
-}
-
-.management .adduser {
-	grid-area: adduser;
-}
-
-.management .edituser {
-	grid-area: edituser;
-}
-
-.management .deleteuser {
-	grid-area: deleteuser;
-}
-
 .hidden {
 	display: none;
 }
