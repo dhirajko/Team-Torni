@@ -273,10 +273,15 @@ document.addEventListener("DOMContentLoaded", function () {
 					//Get all notes if the user is manager
 
 					if (userobj.rights == 1) {
+						document.getElementById('notesGroup').innerHTML = "Hotel Manager";
 						notesListAll();
 						document.getElementById("donebutton").addEventListener("click", function () {
 							event.preventDefault();
 							let r = confirm("Are you sure the task is finished?");
+							document.getElementById('ht').innerHTML = "Title";
+							document.getElementById('hi').innerHTML = "ID: ";
+							document.getElementById('hts').innerHTML = "Timestamp: ";
+							document.getElementById('hd').innerHTML = "Description: ";
 							if (r == true) {
 								let myInit8 = {
 									method: 'GET',
@@ -286,9 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
 										'Content-Type': 'application/json'
 									}
 								};
-								
+
 								console.log(clickedNote)
-	
+
 								fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + clickedNote, myInit8)
 									.then(response => {
 										let resp = checkStatus(response);
@@ -338,10 +343,35 @@ document.addEventListener("DOMContentLoaded", function () {
 					//Get the worker's department's notes
 
 					if (userobj.rights == 0) {
+						if (userobj.department_id == 1) {
+							document.getElementById('notesGroup').innerHTML = "Restaurant";
+						}
+						if (userobj.department_id == 2) {
+							document.getElementById('notesGroup').innerHTML = "Bar";
+						}
+						if (userobj.department_id == 3) {
+							document.getElementById('notesGroup').innerHTML = "Breakfast";
+						}
+						if (userobj.department_id == 4) {
+							document.getElementById('notesGroup').innerHTML = "Reception";
+						}
+						if (userobj.department_id == 5) {
+							document.getElementById('notesGroup').innerHTML = "Floorcare";
+						}
+						if (userobj.department_id == 6) {
+							document.getElementById('notesGroup').innerHTML = "Kitchen";
+						}
+						if (userobj.department_id == 7) {
+							document.getElementById('notesGroup').innerHTML = "Meetings";
+						}
 						notesListDep();
 						document.getElementById("donebutton").addEventListener("click", function () {
 							event.preventDefault();
 							let r = confirm("Are you sure the task is finished?");
+							document.getElementById('ht').innerHTML = "Title";
+							document.getElementById('hi').innerHTML = "ID: ";
+							document.getElementById('hts').innerHTML = "Timestamp: ";
+							document.getElementById('hd').innerHTML = "Description: ";
 							if (r == true) {
 								let myInit8 = {
 									method: 'GET',
@@ -351,9 +381,9 @@ document.addEventListener("DOMContentLoaded", function () {
 										'Content-Type': 'application/json'
 									}
 								};
-								
+
 								console.log(clickedNote)
-	
+
 								fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + clickedNote, myInit8)
 									.then(response => {
 										let resp = checkStatus(response);
@@ -397,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
 										window.alert("Can't get the note you're trying to finish");
 									});
 							}
-						})	
+						})
 					}
 
 					//Get the history
@@ -749,7 +779,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 						document.getElementById('notesGroup').innerHTML = document.getElementById(change).innerHTML;
 					}*/
-					
+
 				} else {
 					document.getElementById("wrong").innerHTML = "Wrong username or password";
 				}
