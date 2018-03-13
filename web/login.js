@@ -201,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 									document.getElementById('infotitle').innerHTML = notes[index].title;
 									document.getElementById('infoid').innerHTML = "ID: " + notes[index].id;
+
 									document.getElementById('timestamp').innerHTML = "Timestamp: " + time;
 									document.getElementById('description').innerHTML = "Description: " + notes[index].content;
 
