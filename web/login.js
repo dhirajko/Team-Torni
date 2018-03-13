@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+let clickedNote;
 	document.getElementById("submit").addEventListener("click", function clicklogin() {
 
 		const checkStatus = function (response) {
@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 									document.getElementById('infotitle').innerHTML = notes[index].title;
 									document.getElementById('infoid').innerHTML = "ID: " + notes[index].id;
+
 									document.getElementById('timestamp').innerHTML = "Timestamp: " + time;
 									document.getElementById('description').innerHTML = "Description: " + notes[index].content;
 								})
