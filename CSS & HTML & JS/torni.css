@@ -97,12 +97,14 @@ h2,
 }
 
 .header h1 {
+	font-size: 150%;
 	font-family: 'Merriweather', serif;
 	text-align: center;
 	color: azure;
 	letter-spacing: 10px;
 	margin-top: 8px;
 	margin-bottom: 0;
+	
 }
 
 .header ul {
@@ -221,7 +223,7 @@ h2,
 .notelist {
 	background-color: snow;
 	display: grid;
-	height: 445px;
+	height: 400px;
 	grid-template-columns: 1fr 3fr 1fr;
 	grid-template-rows: 25px auto;
 	grid-template-areas: "noteid title time" "list list list";
@@ -321,9 +323,9 @@ p, .radio {
 }
 
 .manage {
-	width: 600px;
-	display : grid;
-	grid-gap: 40px;
+	width: 500px;
+	display: grid;
+	grid-gap: 15px;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas: "adduser edituser deleteuser";
 }
@@ -376,7 +378,7 @@ p, .radio {
 }
 .history{
 	display: grid;
-	grid-template-columns: 100px 400px 150px;
+	grid-template-columns: 70px 350px 100px;
 	grid-template-rows: 40px 30px 1fr 1fr;
 	grid-template-areas:"hh2 hh2 hh2" "historyid historytitle historytime""historylist historylist historylist" "historyinfo historyinfo historyinfo";
 }
@@ -454,6 +456,9 @@ footer {
 		grid-template-rows: 0.5fr 0.5fr 2fr;
 		grid-template-areas: "head head" "menu menu" "notes notes";
 	}
+	.header h1{
+		font-size: 120%;
+	}
 	.menu {
 		margin: 0;
 		height: auto;
@@ -471,6 +476,21 @@ footer {
 	#description {
 		height: 350px;
 	}
+	.add{
+		width: 385px;
+	}
+	#title{
+		width: 100%;
+	}
+	.manage {
+	width: 400px;
+	display : grid;
+	grid-gap: 10px;
+	
+	}
+	.history{
+		grid-template-columns: 60px 240px 80px;
+	}
 }
 
 @media(min-width:475px) and (max-width: 599px) {
@@ -479,6 +499,9 @@ footer {
 		grid-template-columns: 1fr;
 		grid-template-rows: 130px 1fr 5fr;
 		grid-template-areas: "head" "menu" "notes";
+	}
+	.header h1{
+		font-size: 100%;
 	}
 	.menu {
 		height: auto;
@@ -500,6 +523,19 @@ footer {
 	#description {
 		height: 240px;
 	}
+	.add{
+		width: 385px;
+	}
+	.manage {
+		width: 400px;
+		display : grid;
+		grid-gap: 10px;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-areas: "adduser edituser""deleteuser deleteuser";
+		}
+	.history{
+		grid-template-columns: 45px 195px 65px;
+	}
 
 }
 
@@ -517,6 +553,12 @@ footer {
 	.container .head img {
 		margin: auto;
 	}
+	.header{
+		height: 140%;
+	}
+	.header h1{
+		font-size: 80%;
+	}
 	.menu {
 		margin: 0;
 		height: auto;
@@ -533,6 +575,21 @@ footer {
 
 	#description {
 		height: 370px;
+	}
+	.add{
+		width: 240px;
+	}
+	#content{
+		width: 240px;
+	}
+	.manage {
+		width: 200px;
+		display : grid;
+		grid-gap: 10px;
+		grid-template-areas: "adduser""edituser""deleteuser";
+		}
+	.history{
+		grid-template-columns: 35px 175px 50px;
 	}
 }
 .hidden {
