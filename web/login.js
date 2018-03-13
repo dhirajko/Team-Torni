@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 								}
 								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
 
+									event.preventDefault();
 									let time = timeConverter(json[event.target.id - 1].atimestamp);
 									document.getElementById('infotitle').innerHTML = json[event.target.id - 1].title;
 									document.getElementById('infoid').innerHTML = "ID: " + json[event.target.id - 1].id;
@@ -190,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
 								}
 								document.getElementById("list").addEventListener("click", function clickNote(noteid) {
 
+									event.preventDefault();
 									const index = notes.findIndex(note => note.id == event.target.id);
 									let time = timeConverter(notes[index].atimestamp);
 
@@ -627,6 +629,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					//ADD HERE!
 
+					//Done button
+
+					document.getElementById("donebutton").addEventListener("click", function () {
+						event.preventDefault();
+						let r = confirm("Are you sure the task is finished?");
+						if (r == true) {
+							let myInit8 = {
+								method: 'GET',
+								mode: 'no-cors',
+								headers: {
+									'Accept': 'application/json',
+									'Content-Type': 'application/json'
+								}
+							};
+							let temp = document.getElementById("infoid").value;
+							console.log(temp);
+							let clickedNote = temp.slice(4);
+							console.log(clickedNote);
+	
+							fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + clickedNote, myInit8)
+								.then(response => {
+									let resp = checkStatus(response);
+									return resp.json();
+								})
+								.then(json => {
+									console.log(json);
+									let note = json;
+									let body = {
+										id : note.id,
+										title : note.title,
+										content : note.content,
+										astate : true,
+										atimestamp : Date.now(),
+										department : {id : note.department_id}
+									}
+									console.log(body);
+									let myInit9 = {
+										method: 'PUT',
+										body: JSON.stringify(body),
+										headers: {
+											'Content-Type': 'application/json'
+										}
+									};
+									fetch('http://10.114.32.42:8080/TorniNew/tower/note/' + note.id, myInit9)
+										.then(response => {
+											let resp = checkStatus(response);
+											if (resp.status == 204) {
+												window.alert("You Finished the note!");
+											}
+										})
+										.catch(error => {
+											console.log('error : ' + error.message);
+											window.alert("Can't finish the note");
+										});
+								})
+								.catch(error => {
+									console.log('error : ' + error.message);
+									window.alert("Can't get the note you're trying to finish");
+								});
+						}
+					})
 
 				}
 			})
